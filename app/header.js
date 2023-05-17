@@ -1,15 +1,15 @@
 "use client"
 import React from "react";
 import FlashOnIcon from '@mui/icons-material/FlashOn';
-import { Lobster } from '@next/font/google';
-const lobster = Lobster({ 
+import { Lobster_Two } from '@next/font/google';
+const lobsterTwo = Lobster_Two({ 
   subsets: ['latin'], 
-  weight: '400',
+  weight: '700',
   // display: 'swap',
   // family: 'Landrina Outline, cursive',
-  // style: 'normal',
+  style: ["italic"],
   fontStretch: 'expanded',
-  fontStyle: 'italic',
+  
   fontWeight: 'bold',
   
  })
@@ -29,7 +29,7 @@ function Header() {
   
   return (
     <header>
-      <div  onClick={() => {}}><h1 className={lobster.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div>
+      <div  className="italics" onClick={() => {}}><h1 className={lobsterTwo.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div>
     </header>
   );
 }
