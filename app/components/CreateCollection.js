@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
 import Alert from '@mui/material/Alert';
+import '../globals.css'
 
 
 function CreateCollection(props) {
