@@ -22,14 +22,17 @@ const lobsterTwo = Lobster_Two({
 //  font-family: 'Londrina Outline', cursive;
 //import globals css
 import './globals.css'
-
+import Logo from "./components/Logo";
+import Image from "next/image";
 
 function Header() {
  
   
   return (
     <header>
-      <div  className="italics" onClick={() => {}}><h1 className={lobsterTwo.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div>
+      {/* <div  className="italics" onClick={() => {}}><h1 className={lobsterTwo.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div> */}
+  
+      <Image src={'/flashy-logo.png'} width={423.387} height={70} alt="Flashy McFlasherson" />
     </header>
   );
 }

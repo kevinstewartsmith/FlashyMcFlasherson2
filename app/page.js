@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 import CreateCollection from "./components/CreateCollection";
 import Grid from "@mui/material/Grid";
 import Note from "./components/note";
-import Header from "./header";
+
 
 function CollectionUI (props) {
     //const navigate = useNavigate();
@@ -35,7 +35,7 @@ function CollectionUI (props) {
 
     return (
         <div>
-        <Header />
+       
             <CreateCollection
                 onAdd={collectionChanged}
                 inputType={"collection"}
