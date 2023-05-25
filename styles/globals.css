@@ -24,15 +24,15 @@ body {
   /* background-color: black; */
   /* background-color: white; */
   /* background-image: url("https://www.transparenttextures.com/patterns/washi.png"); */
-  padding: 0 16px;
+  padding: 0 0px;
 
   
 }
 
 nav {
   background-color: #ff5b5b;
-  margin: auto -16px;
-  padding: 16px 32px;
+  /* margin: auto -16px;
+  padding: 16px 32px; */
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   height: 100px;
 }
@@ -205,6 +205,10 @@ form.create-note button {
 
 .black_btn {
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+}
+
+.white_btn {
+  @apply rounded-full border border-white bg-white py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline_btn {
