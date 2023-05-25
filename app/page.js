@@ -1,9 +1,9 @@
 "use client"
 import React, {useState, useEffect} from "react";
 
-import CreateCollection from "./components/CreateCollection";
+import CreateCollection from "@components/CreateCollection";
 import Grid from "@mui/material/Grid";
-import Note from "./components/note";
+import Note from "../components/note";
 
 
 function CollectionUI (props) {

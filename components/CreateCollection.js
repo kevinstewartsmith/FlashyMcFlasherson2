@@ -3,8 +3,8 @@ import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
 import Alert from '@mui/material/Alert';
-import '../globals.css'
-
+//import globals from styles folder
+import "@styles/globals.css";
 
 function CreateCollection(props) {
   const [expanded, setExpansion] = useState(false);
