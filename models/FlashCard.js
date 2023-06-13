@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
-const flashCardSchema = mongoose.Schema({
+const flashCardSchema = Schema({
   
     front: {
       type: String,
@@ -13,6 +13,6 @@ const flashCardSchema = mongoose.Schema({
   
   })
 
-  const FlashCard = models.FlashCard || model('FlashCard', flashCardSchema)
+const FlashCard = models.FlashCard || model('FlashCard', flashCardSchema)
 
 export default FlashCard;
