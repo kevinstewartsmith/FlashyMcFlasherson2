@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import Zoom from "@mui/material/Zoom";
+import '@styles/globals.css'
+
 
 function Note(props) {
   const [mouseEntered, setMouseEntered] = useState(false);
@@ -32,29 +34,29 @@ function Note(props) {
 
   return (
     <div>
-    <div
-      className="note"
-      onClick={handleClick}
-      onMouseEnter={handleMouse}
-      onMouseLeave={handleMouse}
-    >
-      <div className="note-div">
-        <div className="center">
-          <h1>{props.collectionName}</h1>
-          <p>{mouseEntered ? props.description  : null}</p>
+      <div
+        className="note"
+        onClick={handleClick}
+        onMouseEnter={handleMouse}
+        onMouseLeave={handleMouse}
+      >
+        <div className="note-div">
+          <div className="center">
+            <h1>{props.collectionName}</h1>
+            <p>{mouseEntered ? props.description  : null}</p>
+            
+          </div>
           
         </div>
         
       </div>
       
-    </div>
-    
-    <div className="delete-button-container">
-      {/* <button className="delete-button" onClick={clickDelete}> <DeleteOutlinedIcon /></button> */}
+      <div className="delete-button-container">
+        {/* <button className="delete-button" onClick={clickDelete}> <DeleteOutlinedIcon /></button> */}
+        
+        {/* <DeleteOutlinedIcon className="delete-button" onClick={clickDelete}/> */}
       
-      {/* <DeleteOutlinedIcon className="delete-button" onClick={clickDelete}/> */}
-    
-    </div>
+      </div>
     
     </div>
   );

@@ -12,7 +12,7 @@ export const connectToDB = async () => {
 
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
-            dbName: "FLASHY-MCFLASHERSON-DB",
+            dbName: "FLASHY-DB",
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })

@@ -62,7 +62,7 @@ function Header() {
                         </button>  
                         <Link href="/profile">
                             <Image
-                                src="/assets/images/logo.png"
+                                src={session?.user.image}
                                 alt="Profile"
                                 width={37}
                                 height={37}

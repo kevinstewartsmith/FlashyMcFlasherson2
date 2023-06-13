@@ -4,7 +4,8 @@ import React, {useState, useEffect} from "react";
 import CreateCollection from "@components/CreateCollection";
 import Grid from "@mui/material/Grid";
 import Note from "../components/note";
-
+import Form from "@components/Form";
+import CollectionFeed from "@components/CollectionFeed";
 
 function CollectionUI (props) {
     //const navigate = useNavigate();
@@ -12,17 +13,17 @@ function CollectionUI (props) {
     const [selectedCollection,setSelectedCollection] = useState(false);
     const [collectionCount,setCollectionCount] = useState(0);
     
-    useEffect(() => {
-        //For loading collections
-        fetch("/getCollections").then(function(response){
-          return response.json();
-        }).then(function(response){
-          setCollectionItems(response)
-          console.log(collectionArray.length);
-        }).catch(err => {
-          console.log("Error Reading data " + err);
-        });  
-      },[collectionCount]); 
+    // useEffect(() => {
+    //     //For loading collections
+    //     fetch("/getCollections").then(function(response){
+    //       return response.json();
+    //     }).then(function(response){
+    //       setCollectionItems(response)
+    //       console.log(collectionArray.length);
+    //     }).catch(err => {
+    //       console.log("Error Reading data " + err);
+    //     });  
+    //   },[collectionCount]); 
 
     function collectionClicked(collectionID) {
         console.log("Collection Clicked Collection UI");
@@ -47,7 +48,8 @@ function CollectionUI (props) {
                 //selectedCollection={props.selectedCollection} 
             />
 
-            <div>
+
+            {/* <div>
                 <Grid
                     container
                     //rowSpacing={1}
@@ -69,7 +71,8 @@ function CollectionUI (props) {
                         </Grid>
                     ))}
                 </Grid>
-            </div>
+            </div> */}
+            <CollectionFeed />
         </div>
     )
 }

@@ -1,12 +1,17 @@
+"use client"
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
 import Alert from '@mui/material/Alert';
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 //import globals from styles folder
 import "@styles/globals.css";
 
 function CreateCollection(props) {
+  const router = useRouter()
+    const { data: session } = useSession()
   const [expanded, setExpansion] = useState(false);
   const [collectionData, setCollectionData] = useState({ name: "", description: "" });
   
@@ -32,22 +37,32 @@ function CreateCollection(props) {
     });
   }
 
-  function submitNote(event) {
+  const submitNote = async (event) => {
     const name = collectionData.name
     const description = collectionData.description
-      fetch('/addCollection', {
-        method: 'POST',
-        // We convert the React state to JSON and send it as the POST body
-        body: JSON.stringify({"name": name, "description": description}),
-        headers: {"Content-Type": "application/json", 'Accept': 'application/json'}//{
-      }).then(function(response) {
-        console.log(response)
-        return response.json();
-      }).then(function(response){ console.log(response) });
+      
+   
       props.onAdd();
       console.log("Add some shit");      
       setCollectionData({ name: "",description: "" });
       event.preventDefault();  
+      try{
+        const response = await fetch('/api/collection/new', {
+          method: 'POST',
+          // We convert the React state to JSON and send it as the POST body
+          body: JSON.stringify({
+            userId: session?.user.id,
+            name: name, 
+            description: description}),
+          // headers: {"Content-Type": "application/json", 'Accept': 'application/json'}
+        });
+
+        if (response.ok) {
+          router.push("/");
+        }
+      } catch (error) {
+        console.log(error);
+      }
   }
 
   return (
