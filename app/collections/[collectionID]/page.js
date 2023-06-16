@@ -5,7 +5,7 @@ import CreateFlashCard from '@components/CreateFlashCard';
 
 export default function Collection({ params}) {
     const collectionID = params.collectionID
-    const [collection,setCollection] = useState({});
+    const [collection, setCollection] = useState({});
     
     useEffect(() => {
         
@@ -31,7 +31,18 @@ export default function Collection({ params}) {
             <h1>{collection.id}</h1> 
             <h1>{collection.name}</h1>
             <h1>{collection.description}</h1>
-            <CreateFlashCard collectionID={collectionID} />
+            <CreateFlashCard 
+                collectionID={collectionID} 
+                //onAdd={collectionChanged}
+                inputType={"flashcard"}
+                topPlaceholder={"Add Flashcard Front"}
+                bottomPlaceholder={"Add Flashcard Back"}
+                topName={"front"}
+                bottomName={"back"}
+                //selectedCollection={selectedCollection}
+                //selectedCollection={props.selectedCollection} 
+                //collectionChanged={collectionChanged}
+            />
 
           
         </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
@@ -16,7 +16,7 @@ const CreateFlashCard = (props) => {
     const router = useRouter()
     const { data: session } = useSession()
     const [expanded, setExpansion] = useState(false);
-    const [collectionData, setCollectionData] = useState({ name: "", description: "" });
+    const [flashCardData, setFlashCardData] = useState({ front: "", back: "" });
     //const {toggleTrigger} = useContext(CollectionContext);
 
 
@@ -27,38 +27,44 @@ const CreateFlashCard = (props) => {
       function handleInputText(event) {
         const { name, value } = event.target;
     
-        setCollectionData((prevValue) => {
-          if (name === "title" || name ==="cardFront") {
+        setFlashCardData((prevValue) => {
+          if (name === "front" ) {
             return {
-              name: value,
-              description: prevValue.content
+              front: value,
+              back: prevValue.back
             };
-          } else if (name === "content" || name == "cardBack") {
+          } else if (name === "back" ) {
             return {
-              name: prevValue.name,
-              description: value
+              front: prevValue.front,
+              back: value
             };
           }
         });
+        console.log(flashCardData);
       }
+
+    //   useEffect(() => {
+    //     console.log(flashCardData);
+    // }, [handleInputText,flashCardData])
     
       const submitNote = async (event) => {
-        const name = collectionData.name
-        const description = collectionData.description
+        const front = flashCardData.front
+        const back = flashCardData.back
           
        
-          props.onAdd();
+          //props.onAdd();
           console.log("Add some shit");      
-          setCollectionData({ name: "",description: "" });
+          setFlashCardData({ front: "", back: "" });
           event.preventDefault();  
           try{
-            const response = await fetch('/api/collection/new', {
+            const response = await fetch('/api/flashcard/new', {
               method: 'POST',
               // We convert the React state to JSON and send it as the POST body
               body: JSON.stringify({
                 userId: session?.user.id,
-                name: name, 
-                description: description}),
+                front,
+                back, 
+                collection: props.collectionID }),
               // headers: {"Content-Type": "application/json", 'Accept': 'application/json'}
             });
     
@@ -67,27 +73,28 @@ const CreateFlashCard = (props) => {
             }
           } catch (error) {
             console.log(error);
-          } finally {
-            toggleTrigger()
-          }
+          } 
+        //   finally {
+        //     //toggleTrigger()
+        //   }
     }
     return (
         <div>  
         <form className="create-note">
           <input
-            name={props.topName}
-            placeholder={props.topPlaceholder}
+            name={"front"}
+            placeholder={"Add Flashcard Front"}
             onClick={handleClick}
             onChange={handleInputText}
             type="text"
-            value={collectionData.name}
+            value={flashCardData.front}
           />
           {expanded ? (
             <textarea
-              name={props.bottomName}
+              name={"back"}
               onChange={handleInputText}
-              value={collectionData.description}
-              placeholder={props.bottomPlaceholder}
+              value={flashCardData.back}
+              placeholder={"Add Flashcard Back"}
               //rows={rows}
               type="text"
             />
