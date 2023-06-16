@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
@@ -8,13 +8,15 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 //import globals from styles folder
 import "@styles/globals.css";
+import { CollectionContext } from "./CollectionContext";
 
 function CreateCollection(props) {
   const router = useRouter()
-    const { data: session } = useSession()
+  const { data: session } = useSession()
   const [expanded, setExpansion] = useState(false);
   const [collectionData, setCollectionData] = useState({ name: "", description: "" });
-  
+  const {toggleTrigger} = useContext(CollectionContext);
+
   function handleClick() {  
     setExpansion(!expanded);
   }
@@ -62,6 +64,8 @@ function CreateCollection(props) {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        toggleTrigger()
       }
   }
 

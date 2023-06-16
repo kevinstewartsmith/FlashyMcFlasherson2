@@ -1,7 +1,8 @@
 "use client"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Grid } from '@mui/material'
 import Note from './note'
+import { CollectionContext } from './CollectionContext'
 
 const CollectionList = ({data}) => {
     return (
@@ -20,7 +21,7 @@ const CollectionList = ({data}) => {
                             key={idx}
                             id={collection._id}
                             collectionName={collection.name}
-                            //description={collection.description}
+                            description={collection.description}
                             //onClick={() => { navigate("/collections/" + collection._id,  { state: { collectionName: collection.name }}) }}
                             //onDelete={collectionChanged}
                         />
@@ -33,11 +34,20 @@ const CollectionList = ({data}) => {
         
 
 
-const CollectionFeed = () => {
+const CollectionFeed = (props) => {
     const [collectionItems,setCollectionItems] = useState([]);
+    const { trigger,restoreScrollPosition } = useContext(CollectionContext);
+    
+
     useEffect(() => {
+        
         fetchCollections()
-    },[]);
+         
+    },[trigger]);
+
+
+
+ 
 
     const fetchCollections = async () => {
         const res = await fetch('/api/collection/all')
@@ -47,6 +57,9 @@ const CollectionFeed = () => {
         setCollectionItems(data)
 
     }
+
+    //Add one to clickcount to trigger useEffect
+
   return (
     <div>       
         <CollectionList data={collectionItems} />

@@ -2,9 +2,27 @@ import React, { useState } from "react";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import Zoom from "@mui/material/Zoom";
 import '@styles/globals.css'
+import { Montserrat } from "next/font/google";
+import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
+const montserrat = Montserrat({
+  subsets: ['latin'],
+})
 
 function Note(props) {
+   console.log(props.id);
+
+  const collectionData = {
+    id: props.id,
+    name: props.collectionName,
+    description: props.description
+    
+
+  }
+
+  const router = useRouter()
+
   const [mouseEntered, setMouseEntered] = useState(false);
   function handleMouse() {
     setMouseEntered(!mouseEntered);
@@ -34,15 +52,23 @@ function Note(props) {
 
   return (
     <div>
+    {/* <div onClick={() => {
+      router.push({
+          pathname: '/collections/[collectionID]',
+          query: { collectionId: "cat"},
+        })
+    }}> */}
+    <Link href={`/collections/${props.id}`}>
+    
       <div
         className="note"
-        onClick={handleClick}
+        //onClick={() => {`/collections/${props.id}`}}
         onMouseEnter={handleMouse}
         onMouseLeave={handleMouse}
       >
         <div className="note-div">
           <div className="center">
-            <h1>{props.collectionName}</h1>
+            <h1 className={montserrat.className}>{props.collectionName}</h1>
             <p>{mouseEntered ? props.description  : null}</p>
             
           </div>
@@ -50,6 +76,7 @@ function Note(props) {
         </div>
         
       </div>
+      {/* </Link> */}
       
       <div className="delete-button-container">
         {/* <button className="delete-button" onClick={clickDelete}> <DeleteOutlinedIcon /></button> */}
@@ -57,7 +84,7 @@ function Note(props) {
         {/* <DeleteOutlinedIcon className="delete-button" onClick={clickDelete}/> */}
       
       </div>
-    
+    </Link>
     </div>
   );
 }
