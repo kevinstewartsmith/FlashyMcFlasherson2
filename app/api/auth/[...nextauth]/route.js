@@ -4,10 +4,6 @@ import { signIn } from "next-auth/react";
 import { connectToDB } from "@utils/database";
 import User from "@models/User";
 
-// console.log({
-//     clientId: process.env.GOOGLE_CLIENT_ID,
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET    
-// })
 const handler = NextAuth({
     
     providers: [
@@ -45,8 +41,6 @@ const handler = NextAuth({
         }
 
     },
-
-
 
 })
 

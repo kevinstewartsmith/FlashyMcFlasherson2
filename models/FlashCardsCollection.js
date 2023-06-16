@@ -14,10 +14,10 @@ const fcCollectionsSchema = Schema({
       type: String,
       required: false
     },
-    // flashCards: {
-    //   type: [FlashCard],
-    //   required: false
-    // }
+    flashCards: {
+      type: [FlashCard.schema],
+      required: false
+    }
   })
 
 const FlashCardsCollection = models.FlashCardsCollection || model('FlashCardsCollection', fcCollectionsSchema)   
