@@ -16,7 +16,7 @@ const fcCollectionsSchema = Schema({
     },
     flashCards: {
       type: [FlashCard.schema],
-      required: false
+      required: true
     }
   })
 

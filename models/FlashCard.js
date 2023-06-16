@@ -10,6 +10,17 @@ const flashCardSchema = Schema({
       type: String,
       required: true
     },
+    collectionID: {
+      type: Schema.Types.ObjectId,
+      ref: 'FlashCardsCollection',
+      required: true
+    },
+    creator: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
+
   
   })
 
