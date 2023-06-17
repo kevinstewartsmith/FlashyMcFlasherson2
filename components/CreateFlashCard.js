@@ -64,7 +64,7 @@ const CreateFlashCard = (props) => {
                 userId: session?.user.id,
                 front,
                 back, 
-                collection: props.collectionID }),
+                collectionID: props.collectionID }),
               // headers: {"Content-Type": "application/json", 'Accept': 'application/json'}
             });
     
