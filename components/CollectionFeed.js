@@ -47,8 +47,6 @@ const CollectionFeed = (props) => {
 
 
 
- 
-
     const fetchCollections = async () => {
         const res = await fetch('/api/collection/all')
         const data = await res.json()

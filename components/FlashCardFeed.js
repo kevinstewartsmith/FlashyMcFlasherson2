@@ -34,18 +34,14 @@ const FlashCardFeed = (props) => {
     const [flashCardItems,setFlashCardItems] = useState([]);
 
     useEffect(() => {
-        
         fetchCollections()
-         
     },[]);
 
     const fetchCollections = async () => {
         const res = await fetch(`/api/collection/gallery/${props.collectionID}/flashcards`)
         const data = await res.json()
         console.log(data);
-        
         setFlashCardItems(data)
-
     }
 
   return (

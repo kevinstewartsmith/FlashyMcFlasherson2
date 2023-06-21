@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import CreateFlashCard from '@components/CreateFlashCard';
 import FlashCardFeed from '@components/FlashCardFeed';
 
-export default function Collection({ params}) {
+export default function Collection({ params }) {
     const collectionID = params.collectionID
     const [collection, setCollection] = useState({});
     

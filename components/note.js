@@ -11,7 +11,8 @@ const montserrat = Montserrat({
 })
 
 function Note(props) {
-   console.log(props.id);
+  console.log("Collection ID in the note component"); 
+  console.log(props.id);
 
   const collectionData = {
     id: props.id,
@@ -28,23 +29,47 @@ function Note(props) {
     setMouseEntered(!mouseEntered);
   }
 
-  function clickDelete(event){
-    const id = props.id
-    fetch('/deleteCollection', {
-      method: 'POST',
-      // We convert the React state to JSON and send it as the POST body
-      body: JSON.stringify({"id": id}),
-      headers: {"Content-Type": "application/json", 'Accept': 'application/json'}//{
+  const clickDelete = async (event) => {
+    // const id = props.id
+    // fetch(`/collection/gallery/${props.id}`, {
+    //   method: 'DELETE',
+    //   // We convert the React state to JSON and send it as the POST body
+    //   body: JSON.stringify({"id": id}),
+    //   headers: {"Content-Type": "application/json", 'Accept': 'application/json'}//{
 
-    }).then(function(response) {
-      //console.log(response)
-      return response.json();
-    }).then(function(response){ console.log(response) });
-    //const array = getCollectionData()
-    
-    props.onDelete(props.id)
+    // }).then(function(response) {
+    //   //console.log(response)
+    //   return response.json();
+    // }).then(function(response){ console.log(response) });
+    // //const array = getCollectionData()
     event.preventDefault();
+    // props.onDelete(props.id)
+    console.log("delete clicked");
+    
+    try{
+      // const response = await fetch(`/collection/delete/${props.id}`, {
+      //   method: 'DELETE',
+      //   // We convert the React state to JSON and send it as the POST body
+      //   body: JSON.stringify({
+      //     id: props.id
+      //   }),
+      //   // headers: {"Content-Type": "application/json", 'Accept': 'application/json'}
+      // });
+      const response = await fetch(`/api/collection/delete/${props.id}`,{ method: "DELETE" })
+
+      if (response.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      
+    }
+  
+  
   }
+
+
   function handleClick() {
     const id = props.id
     props.onClick(id)
@@ -52,39 +77,31 @@ function Note(props) {
 
   return (
     <div>
-    {/* <div onClick={() => {
-      router.push({
-          pathname: '/collections/[collectionID]',
-          query: { collectionId: "cat"},
-        })
-    }}> */}
-    <Link href={`/collections/${props.id}`}>
-    
       <div
         className="note"
         //onClick={() => {`/collections/${props.id}`}}
         onMouseEnter={handleMouse}
         onMouseLeave={handleMouse}
       >
+       <Link href={`/collections/${props.id}`}>
         <div className="note-div">
           <div className="center">
             <h1 className={montserrat.className}>{props.collectionName}</h1>
             <p>{mouseEntered ? props.description  : null}</p>
             
-          </div>
-          
+          </div> 
         </div>
-        
+        </Link> 
       </div>
       {/* </Link> */}
       
-      <div className="delete-button-container">
+      <div className="delete-button-container" onClick={clickDelete}>
         {/* <button className="delete-button" onClick={clickDelete}> <DeleteOutlinedIcon /></button> */}
         
-        {/* <DeleteOutlinedIcon className="delete-button" onClick={clickDelete}/> */}
+        <DeleteOutlinedIcon className="delete-button" />
       
       </div>
-    </Link>
+    
     </div>
   );
 }
