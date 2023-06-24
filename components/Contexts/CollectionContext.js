@@ -13,6 +13,7 @@ const ContextProvider = ({ children }) => {
 
     const updateScrollPosition = (position) => {
       setScrollPosition(position);
+      console.log("scrollPosition in Context: " + position);
     };
 
 

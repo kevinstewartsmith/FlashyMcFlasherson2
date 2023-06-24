@@ -1,14 +1,17 @@
 import { useState, useContext, useEffect } from 'react'
-import { CollectionContext } from './CollectionContext';
+import { CollectionContext } from '../Contexts/CollectionContext';
 import CreateCollection from './CreateCollection'
 import CollectionFeed from './CollectionFeed'
+
+
+
 
 const CollectionParent = () => {
   const [clickCount,setClickCount] = useState(0);
   const [collectionCount,setCollectionCount] = useState(0);
   const [selectedCollection,setSelectedCollection] = useState(false);
-
   const { scrollPosition, updateScrollPosition } = useContext(CollectionContext);
+  
   function collectionChanged(){
     setCollectionCount(collectionCount + 1)
   }
@@ -22,6 +25,7 @@ const CollectionParent = () => {
     // Update the scroll position when it changes
     const handleScroll = () => {
       updateScrollPosition(window.pageYOffset);
+      console.log("scrollPosition: " + scrollPosition);
     };
 
     window.addEventListener('scroll', handleScroll);

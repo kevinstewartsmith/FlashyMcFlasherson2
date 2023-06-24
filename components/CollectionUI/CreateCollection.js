@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 //import globals from styles folder
 import "@styles/globals.css";
-import { CollectionContext } from "./CollectionContext";
+import { CollectionContext } from "../Contexts/CollectionContext";
 
 function CreateCollection(props) {
   const router = useRouter()
