@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useState } from 'react';
 
 const FlashCardContext = createContext();
@@ -5,7 +6,7 @@ const FlashCardContext = createContext();
 const FlashCardContextProvider = ({ children }) => {
     const [flashCards, setFlashCards] = useState([]);
     const [collection, setCollection] = useState();
-
+    const test = "this is a test"
     const updateFlashCards = (flashCards) => {
         setFlashCards(flashCards);
         console.log(flashCards);
@@ -17,7 +18,7 @@ const FlashCardContextProvider = ({ children }) => {
     };
 
   return (
-    <FlashCardContext.Provider value={{ flashCards, updateFlashCards, collection, updateCollection }}>
+    <FlashCardContext.Provider value={{ flashCards, updateFlashCards, collection, updateCollection, test }}>
       {children}
     </FlashCardContext.Provider>
   );
