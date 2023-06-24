@@ -1,20 +1,12 @@
-import { useState, useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { CollectionContext } from '../Contexts/CollectionContext';
 import CreateCollection from './CreateCollection'
 import CollectionFeed from './CollectionFeed'
 
-
-
-
 const CollectionParent = () => {
-  const [clickCount,setClickCount] = useState(0);
-  const [collectionCount,setCollectionCount] = useState(0);
-  const [selectedCollection,setSelectedCollection] = useState(false);
   const { scrollPosition, updateScrollPosition } = useContext(CollectionContext);
   
-  function collectionChanged(){
-    setCollectionCount(collectionCount + 1)
-  }
+
 
   useEffect(() => {
     // Restore the scroll position on component mount
@@ -38,18 +30,16 @@ const CollectionParent = () => {
   return (
     <div>
         <CreateCollection
-          onAdd={collectionChanged}
+          //onAdd={collectionChanged}
           inputType={"collection"}
           topPlaceholder={"Add Collection"}
           bottomPlaceholder={"Description (optional)"}
           topName={"title"}
           bottomName={"content"}
-          selectedCollection={selectedCollection}
-          //selectedCollection={props.selectedCollection} 
-          //collectionChanged={collectionChanged}
+          //selectedCollection={selectedCollection}
 
         />
-        <CollectionFeed clickCount={clickCount} />
+        <CollectionFeed  />
     </div>
   )
 }

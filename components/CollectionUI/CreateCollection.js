@@ -44,8 +44,8 @@ function CreateCollection(props) {
     const description = collectionData.description
       
    
-      props.onAdd();
-      console.log("Add some shit");      
+      //props.onAdd();
+      console.log("Add something");      
       setCollectionData({ name: "",description: "" });
       event.preventDefault();  
       try{

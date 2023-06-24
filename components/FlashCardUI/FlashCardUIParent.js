@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 
 const FlashCardUIParent = (props) => {
     const router = useRouter();
-    const [flashCardItems, setFlashCardItems] = useState([{front:"frontRR",back:"backRR"}]);
+    const [flashCardItems, setFlashCardItems] = useState([]);
     const collectionID = props.collectionID
     //const [collection, setCollection] = useState({});
     const [practiceModeOff , setPracticeModeOff] = useState(true);

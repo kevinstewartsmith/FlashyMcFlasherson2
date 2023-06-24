@@ -14,13 +14,11 @@ function Note(props) {
   console.log("Collection ID in the note component"); 
   console.log(props.id);
 
-  const collectionData = {
-    id: props.id,
-    name: props.collectionName,
-    description: props.description
-    
-
-  }
+  // const collectionData = {
+  //   id: props.id,
+  //   name: props.collectionName,
+  //   description: props.description
+  // }
 
   const router = useRouter()
 
@@ -30,31 +28,13 @@ function Note(props) {
   }
 
   const clickDelete = async (event) => {
-    // const id = props.id
-    // fetch(`/collection/gallery/${props.id}`, {
-    //   method: 'DELETE',
-    //   // We convert the React state to JSON and send it as the POST body
-    //   body: JSON.stringify({"id": id}),
-    //   headers: {"Content-Type": "application/json", 'Accept': 'application/json'}//{
 
-    // }).then(function(response) {
-    //   //console.log(response)
-    //   return response.json();
-    // }).then(function(response){ console.log(response) });
-    // //const array = getCollectionData()
     event.preventDefault();
-    // props.onDelete(props.id)
+   
     console.log("delete clicked");
     
     try{
-      // const response = await fetch(`/collection/delete/${props.id}`, {
-      //   method: 'DELETE',
-      //   // We convert the React state to JSON and send it as the POST body
-      //   body: JSON.stringify({
-      //     id: props.id
-      //   }),
-      //   // headers: {"Content-Type": "application/json", 'Accept': 'application/json'}
-      // });
+
       const response = await fetch(`/api/collection/delete/${props.id}`,{ method: "DELETE" })
 
       if (response.ok) {
@@ -65,15 +45,8 @@ function Note(props) {
     } finally {
       
     }
-  
-  
   }
 
-
-  function handleClick() {
-    const id = props.id
-    props.onClick(id)
-  }
 
   return (
     <div>
