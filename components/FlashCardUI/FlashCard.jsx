@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSpring, a } from "@react-spring/web";
-import styles from "./styles.module.css";
+//import styles from "./styles.module.css";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { PropaneSharp } from "@mui/icons-material";
 import { Button } from "@mui/material";
-
+import "@styles/globals.css";
 export default function FlashCard(props) {
   const [flipped, set] = useState(true);
   const { transform, opacity } = useSpring({
@@ -45,7 +45,7 @@ export default function FlashCard(props) {
           <div className="flash" onClick={() => set((state) => !state)}>
 
             <a.div
-              className={`${styles.c} ${styles.front}`}
+              className="c front"
               style={{
                 opacity,
                 transform,
@@ -58,7 +58,7 @@ export default function FlashCard(props) {
               </div>
             </a.div>
             <a.div
-              className={`${styles.c} ${styles.back}`}
+              className="c back"
               style={{
                 opacity: opacity.to((o) => 1 - o),
                 transform,
@@ -67,7 +67,7 @@ export default function FlashCard(props) {
             >
               <div className="center">
                 <h1>{props.back}</h1>
-                <h1>{props.collectionID}</h1>
+                {/* <h1>{props.collectionID}</h1> */}
               </div>
             </a.div>
           </div>

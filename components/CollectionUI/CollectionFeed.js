@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+"use client"
+import { useState, useEffect, useContext } from 'react'
 import { Grid } from '@mui/material'
-import Note from './note'
+import Note from '@components/CollectionUI/note'
+import { CollectionContext } from '../Contexts/CollectionContext'
 
-const FlashCardList = ({data}) => {
+const CollectionList = ({data}) => {
     return (
         <div className='collection-feed'> 
             <Grid
@@ -13,13 +15,13 @@ const FlashCardList = ({data}) => {
                 justify="space-evenly"
                 alignItems="center"
             >       
-                {data.map((flashCard,idx) => (
+                {data.map((collection,idx) => (
                     <Grid key={idx} item padding={1} xs={4} >
                         <Note
                             key={idx}
-                            id={flashCard._id}
-                            collectionName={flashCard.front}
-                            description={flashCard.back}
+                            id={collection._id}
+                            collectionName={collection.name}
+                            description={collection.description}
                             //onClick={() => { navigate("/collections/" + collection._id,  { state: { collectionName: collection.name }}) }}
                             //onDelete={collectionChanged}
                         />
@@ -29,24 +31,38 @@ const FlashCardList = ({data}) => {
         </div>   
     )
 }
+        
 
-const FlashCardFeed = (props) => {
-    const [flashCardItems,setFlashCardItems] = useState([]);
+
+const CollectionFeed = (props) => {
+    const [collectionItems,setCollectionItems] = useState([]);
+    const { trigger,restoreScrollPosition } = useContext(CollectionContext);
+    
 
     useEffect(() => {
+        
         fetchCollections()
-    },[]);
+         
+    },[trigger]);
+
+
 
     const fetchCollections = async () => {
-        const res = await fetch(`/api/collection/gallery/${props.collectionID}/flashcards`)
+        const res = await fetch('/api/collection/all')
         const data = await res.json()
         console.log(data);
-        setFlashCardItems(data)
+        
+        setCollectionItems(data)
+
     }
 
+    //Add one to clickcount to trigger useEffect
+
   return (
-    <FlashCardList data={flashCardItems} />
+    <div>       
+        <CollectionList data={collectionItems} />
+    </div>
   )
 }
 
-export default FlashCardFeed
+export default CollectionFeed
