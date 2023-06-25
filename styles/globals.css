@@ -16,6 +16,11 @@
   }
 }
 
+html {
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
+}
+
 body {
   background: #eee;
   /* background-color: #577191; */
