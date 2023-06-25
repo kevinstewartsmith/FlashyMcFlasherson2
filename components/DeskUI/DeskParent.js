@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import BackButton from "@components/Buttons/BackButton";
 import { FlashCardContext } from "@components/Contexts/FlashCardContext";
 import '@styles/globals.css'
-const DeskParent = (props) => {
+const DeskParent = () => {
     const { flashCards, test} = useContext(FlashCardContext)
 
     return (

@@ -16,7 +16,7 @@ const CollectionList = ({data}) => {
                 alignItems="center"
             >       
                 {data.map((collection,idx) => (
-                    <Grid key={idx} item padding={1} xs={4} >
+                    <Grid key={idx} item padding={1} xs={12} sm={6} md={4} >
                         <Note
                             key={idx}
                             id={collection._id}
