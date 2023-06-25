@@ -7,7 +7,7 @@ const FlashCardList = ({data}) => {
     
     return (
         <div className='collection-feed'> 
-            <Grid
+            {/* <Grid
                 container
                 //rowSpacing={1}
                 spacing={2}
@@ -27,7 +27,7 @@ const FlashCardList = ({data}) => {
                         />
                     </Grid>
                 ))}
-            </Grid> 
+            </Grid>  */}
             <Grid
                 container
                 //rowSpacing={1}
@@ -52,25 +52,9 @@ const FlashCardList = ({data}) => {
 }
 
 const FlashCardFeed = (props) => {
-    const [flashCardItems,setFlashCardItems] = useState(props.flashCardItems);
-    const [practiceMode, setPracticeMode] = useState(true)
- //   const [flashCardItems,setFlashCardItems] = useState(props.flashCardItems);
-
-    // useEffect(() => {
-    //     fetchCollections()
-    // },[]);
-
-    // const fetchCollections = async () => {
-    //     const res = await fetch(`/api/collection/gallery/${props.collectionID}/flashcards`)
-    //     const data = await res.json()
-    //     console.log(data);
-    //     setFlashCardItems(data)
-    // }
 
   return (
     <>
-        {/* { props.practiceMode ? <h1>practiceMode</h1> :<FlashCardList data={flashCardItems} /> } */}
-        {/* { props.practiceMode ? <h1>practiceMode</h1> :<FlashCardList data={props.flashCardItems} /> } */}
         <FlashCardList data={props.flashCardItems} />
     </>
     
