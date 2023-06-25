@@ -7,27 +7,7 @@ const FlashCardList = ({data}) => {
     
     return (
         <div className='collection-feed'> 
-            {/* <Grid
-                container
-                //rowSpacing={1}
-                spacing={2}
-                //columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-                justify="space-evenly"
-                alignItems="center"
-            >       
-                {data.map((flashCard,idx) => (
-                    <Grid key={idx} item padding={1} xs={4} >
-                        <Note
-                            key={idx}
-                            id={flashCard._id}
-                            collectionName={flashCard.front}
-                            description={flashCard.back}
-                            //onClick={() => { navigate("/collections/" + collection._id,  { state: { collectionName: collection.name }}) }}
-                            //onDelete={collectionChanged}
-                        />
-                    </Grid>
-                ))}
-            </Grid>  */}
+
             <Grid
                 container
                 //rowSpacing={1}
@@ -37,7 +17,7 @@ const FlashCardList = ({data}) => {
                 alignItems="center"
             >
                 { data.map((flashCard,idx) => (
-                    <Grid item padding={1} xs={4} key={idx}>
+                    <Grid item padding={1} xs={12} sm={6} md={4} key={idx}>
                         <FlashCard 
                             key={flashCard._id}
                             id={flashCard._id}

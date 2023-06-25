@@ -54,28 +54,24 @@ function Note(props) {
         //onClick={() => {`/collections/${props.id}`}}
         onMouseEnter={handleMouse}
         onMouseLeave={handleMouse}
+        onClick={handleClick}
       >
-      <div onClick={handleClick}>
-       {/* <Link href={`/collections/${props.id}`}> */}
+      <div >
+
         <div className="note-div">
           <div className="center">
             <h1 className={montserrat.className}>{props.collectionName}</h1>
             <p>{mouseEntered ? props.description  : null}</p>
-            
           </div> 
         </div>
-        {/* </Link>  */}
+
         </div>
       </div>
-      {/* </Link> */}
+
       
       <div className="delete-button-container" onClick={clickDelete}>
-        {/* <button className="delete-button" onClick={clickDelete}> <DeleteOutlinedIcon /></button> */}
-        
         <DeleteOutlinedIcon className="delete-button" />
-      
       </div>
-    
     </div>
   );
 }
