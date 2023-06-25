@@ -58,6 +58,10 @@ nav h1 {
   margin-left: 10px;
   
 }
+.centered-heading {
+  text-align: center;
+}
+
 /** From original Repo - START*/
 .collection-feed {
   margin-left: 8vw;

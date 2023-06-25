@@ -1,28 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import Zoom from "@mui/material/Zoom";
 import '@styles/globals.css'
 import { Montserrat } from "next/font/google";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
+import { FlashCardContext } from "@components/Contexts/FlashCardContext";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
 })
 
 function Note(props) {
+  const router = useRouter()
+  const { updateCollection } = useContext(FlashCardContext)
   console.log("Collection ID in the note component"); 
   console.log(props.id);
-
-  // const collectionData = {
-  //   id: props.id,
-  //   name: props.collectionName,
-  //   description: props.description
-  // }
-
-  const router = useRouter()
-
   const [mouseEntered, setMouseEntered] = useState(false);
+  
   function handleMouse() {
     setMouseEntered(!mouseEntered);
   }
@@ -46,7 +41,11 @@ function Note(props) {
       
     }
   }
-
+  const handleClick = async (event) => {
+    event.preventDefault();
+    updateCollection(props.id)
+    router.push(`/collections/${props.id}`);
+  }
 
   return (
     <div>
@@ -56,7 +55,8 @@ function Note(props) {
         onMouseEnter={handleMouse}
         onMouseLeave={handleMouse}
       >
-       <Link href={`/collections/${props.id}`}>
+      <div onClick={handleClick}>
+       {/* <Link href={`/collections/${props.id}`}> */}
         <div className="note-div">
           <div className="center">
             <h1 className={montserrat.className}>{props.collectionName}</h1>
@@ -64,7 +64,8 @@ function Note(props) {
             
           </div> 
         </div>
-        </Link> 
+        {/* </Link>  */}
+        </div>
       </div>
       {/* </Link> */}
       

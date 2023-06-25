@@ -3,11 +3,7 @@ import { FlashCardContextProvider, FlashCardContext } from '@components/Contexts
 import FlashCardUIParent from '@components/FlashCardUI/FlashCardUIParent';
 export default function Collection({ params }) {
 
-
- 
     return (
-        
             <FlashCardUIParent collectionID={ params.collectionID }/>
-        
     )
 }

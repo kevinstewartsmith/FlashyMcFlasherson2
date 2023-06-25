@@ -14,7 +14,9 @@ const FlashCardContextProvider = ({ children }) => {
 
     const updateCollection = (collection) => {
         setCollection(collection);
-        console.log(collection);
+        console.log("Collection Triggered");
+        console.log("collection in context: " + collection);
+        console.log(collection.name);
     };
 
   return (

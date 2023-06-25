@@ -17,7 +17,7 @@ const FlashCardUIParent = (props) => {
     const collectionID = props.collectionID
     //const [collection, setCollection] = useState({});
     const [practiceModeOff , setPracticeModeOff] = useState(true);
-    const { flashCards, updateFlashCards } = useContext(FlashCardContext);
+    const { flashCards, updateFlashCards, collection, updateCollection  } = useContext(FlashCardContext);
     const actions = [
         // { icon: <Link href={`/desk/${collectionID}`}><ViewCarouselIcon /></Link>, name: 'Review Flashcards' },
         { icon: <ViewCarouselIcon onClick={togglePracticeMode} />, name: 'Review Flashcards', click: reviewFCClicked },
@@ -41,19 +41,19 @@ const FlashCardUIParent = (props) => {
     }
 
     useEffect(() => {     
-       // fetchCollections()
+        fetchCollections()
         fetchFlashCards()
     },[]);
     
 
-    // const fetchCollections = async () => {
-    //     //await fetch(`/api/prompt/${promptId}`)
-    //     const res = await fetch(`/api/collection/gallery/${params.collectionID}`)
-    //     const data = await res.json()
-    //     console.log(data);
+    const fetchCollections = async () => {
+        //await fetch(`/api/prompt/${promptId}`)
+        const res = await fetch(`/api/collection/gallery/${collectionID}`)
+        const data = await res.json()
+        console.log(data);
         
-    //     setCollection(data)
-    // }
+        updateCollection(data)
+    }
 
     const fetchFlashCards = async () => {
         console.log("Fetching Flashcards");
@@ -69,10 +69,8 @@ const FlashCardUIParent = (props) => {
   
     return (
     <div>  
-            <h1>{props.collectionID}</h1>
-            {/* <h1>{collection.id}</h1> 
-            <h1>{collection.name}</h1>
-            <h1>{collection.description}</h1> */}
+            <h1 className='centered-heading'>{collection.name}</h1> 
+            <h1 className='centered-heading'>{collection.description}</h1>
             <CreateFlashCard 
                 collectionID={props.collectionID} 
                 //onAdd={collectionChanged}
