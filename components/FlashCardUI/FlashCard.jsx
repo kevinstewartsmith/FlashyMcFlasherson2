@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSpring, a } from "@react-spring/web";
 //import styles from "./styles.module.css";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
@@ -13,11 +13,28 @@ export default function FlashCard(props) {
     config: { mass: 5, tension: 500, friction: 80 }
   });
 
-  // function deleteFlashCard() {
-  //   console.log("Flashcard deleted: " + props.id)
-  //   const id = props.id
-  //   props.onDelete(id)
-  // }
+  const headings = document.querySelectorAll('.card-text');
+
+  function adjustFontSize() {
+    headings.forEach((heading) => {
+      const container = heading.parentElement;
+      const containerHeight = container.clientHeight;
+      const fontSize = parseInt(window.getComputedStyle(heading).fontSize);
+  
+      if (heading.scrollHeight > containerHeight) {
+        heading.style.fontSize = `${fontSize - 1}px`;
+      }
+    });
+  }
+ 
+  
+  window.addEventListener('resize', adjustFontSize);
+  adjustFontSize();
+
+  useEffect(() => {
+    adjustFontSize();
+  }, []);
+
 
   function deleteFlashCard() {
     console.log("FC UI Deleted card ID: " + props.id);
@@ -39,10 +56,10 @@ export default function FlashCard(props) {
 }
 
   return (
-    <div>
-      <div>
-        <div className="flash-card note-div">
-          <div className="flash" onClick={() => set((state) => !state)}>
+    
+      
+        <div className="flash-card" onClick={() => set((state) => !state)}>
+          {/* <div className="flash" > */}
 
             <a.div
               className="c front"
@@ -53,8 +70,8 @@ export default function FlashCard(props) {
                 borderRadius: 7
               }}
             >
-              <div className="center">
-                <h1>{props.front}</h1>
+              <div className="center-parent">
+                <h1 className="card-text">{props.front}</h1>
               </div>
             </a.div>
             <a.div
@@ -65,15 +82,15 @@ export default function FlashCard(props) {
                 borderRadius: 7
               }}
             >
-              <div className="center">
-                <h1>{props.back}</h1>
+              <div className="center-parent">
+                <h1 className="card-text">{props.back}</h1>
                 {/* <h1>{props.collectionID}</h1> */}
               </div>
             </a.div>
-          </div>
+          {/* </div> */}
           <DeleteOutlinedIcon className="delete-button" onClick={deleteFlashCard}/>  
         </div>  
-      </div>
-    </div>
+      
+    
   );
 }

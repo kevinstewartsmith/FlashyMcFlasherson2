@@ -4,11 +4,13 @@ import BackButton from "@components/Buttons/BackButton";
 import { FlashCardContext } from "@components/Contexts/FlashCardContext";
 import '@styles/globals.css'
 const DeskParent = () => {
-    const { flashCards, test} = useContext(FlashCardContext)
+    const { flashCards, collection } = useContext(FlashCardContext)
 
     return (
         <div >
         <BackButton onClick={ () => {} }/>
+        <h1>{collection.name}</h1>
+        <h2>{collection.description}</h2>
         
         <div className="desk-parent">   
             <div className="desk"> 

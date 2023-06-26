@@ -6,7 +6,7 @@ const Desk = ({params}) => {
     
   return (
     <>
-      <div>{params.collectionID}</div>
+      {/* <div>{params.collectionID}</div> */}
       <DeskParent collectionID={params.collectionID} />
     </>
    
