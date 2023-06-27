@@ -8,21 +8,25 @@ const DeskParent = () => {
 
     return (
         <div >
-        <BackButton onClick={ () => {} }/>
-        <h1>{collection.name}</h1>
-        <h2>{collection.description}</h2>
-        
-        <div className="desk-parent">   
-            <div className="desk"> 
-                <div className="deck-container">
-                    <Deck
-                        flashCards={flashCards}
-                    />
+            <div>
+                <BackButton style={{display: "inline"}} onClick={ () => {} }/>
+                <div >
+                    <h1 style={{display: "inline"}}>{collection.name}</h1>
+                    <h2 style={{display: "inline"}}>{collection.description}</h2>
                 </div>
+                
             </div>
+ 
+            <div className="desk-parent">   
+                <div className="desk"> 
+                    <div className="deck-container">
+                        <Deck
+                            flashCards={flashCards}
+                        />
+                    </div>
+                </div>
+            </div> 
         </div>
-        
-    </div>
     )
 }
 

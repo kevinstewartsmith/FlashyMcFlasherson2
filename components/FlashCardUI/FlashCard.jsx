@@ -27,7 +27,7 @@ export default function FlashCard(props) {
     });
   }
  
-  
+  window.addEventListener('load', adjustFontSize);
   window.addEventListener('resize', adjustFontSize);
   adjustFontSize();
 
