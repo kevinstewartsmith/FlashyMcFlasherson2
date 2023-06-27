@@ -1,3 +1,4 @@
+"use client";
 import Deck from "./Deck"
 import React, { useState, useEffect, useContext } from "react";
 import BackButton from "@components/Buttons/BackButton";
@@ -8,9 +9,10 @@ const DeskParent = () => {
 
     return (
         <div >
-            <div>
-                <BackButton style={{display: "inline"}} onClick={ () => {} }/>
+            <div className="sub-header">
+                
                 <div >
+                    <BackButton style={{display: "inline"}} onClick={ () => {} }/>
                     <h1 style={{display: "inline"}}>{collection.name}</h1>
                     <h2 style={{display: "inline"}}>{collection.description}</h2>
                 </div>
