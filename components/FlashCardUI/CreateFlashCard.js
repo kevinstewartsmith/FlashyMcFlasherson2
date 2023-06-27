@@ -43,9 +43,17 @@ const CreateFlashCard = (props) => {
         console.log(flashCardData);
       }
 
-    //   useEffect(() => {
-    //     console.log(flashCardData);
-    // }, [handleInputText,flashCardData])
+      // connect to the wikipedia api and get the intro paragraph of flashCardData.front using async await
+      // const getWiki = async () => {
+      //   const response = await fetch(`https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${flashCardData.front}`)
+      //   const data = await response.json()
+      //   console.log(data)
+      //   return data
+      // }
+      // getWiki()
+      // console.log(getWiki())
+      
+      
     
       const submitNote = async (event) => {
         const front = flashCardData.front
