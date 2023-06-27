@@ -7,7 +7,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 export default function BackButton(props) {
   return (
-    <Stack direction="row" spacing={2}>
+    <Stack direction="row" spacing={2} style={{display: "inline"}}>
         <Button 
             variant="outlined" 
             startIcon={<ArrowBackIosIcon />}

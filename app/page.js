@@ -1,11 +1,14 @@
-"use client"
-import CollectionParent from "@components/CollectionUI/CollectionParent";
+import React from 'react'
+import Link from 'next/link'
 
-function CollectionUI (props) {
+const Home = () => {
+  return (
+    <>
+        <div>Home</div>
+        <Link href="/collections">Go to Collections</Link>
+    </>
 
-    return (
-        <CollectionParent />
-    )
+  )
 }
 
-export default CollectionUI;
+export default Home
