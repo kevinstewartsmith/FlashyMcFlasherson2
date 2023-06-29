@@ -52,7 +52,7 @@ const CreateFlashCard = (props) => {
       // }
       // getWiki()
       // console.log(getWiki())
-      
+
       
     
       const submitNote = async (event) => {
@@ -87,7 +87,7 @@ const CreateFlashCard = (props) => {
         //   }
     }
     return (
-        <div>  
+        <div style={{width: "33vw"}}>  
         <form className="create-note">
           <input
             name={"front"}

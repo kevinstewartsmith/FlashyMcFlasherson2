@@ -48,6 +48,7 @@ function CreateCollection(props) {
       console.log("Add something");      
       setCollectionData({ name: "",description: "" });
       event.preventDefault();  
+      
       try{
         const response = await fetch('/api/collection/new', {
           method: 'POST',

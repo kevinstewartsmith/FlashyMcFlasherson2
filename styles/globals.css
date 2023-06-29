@@ -69,8 +69,8 @@ nav h1 {
 
 /** From original Repo - START*/
 .collection-feed {
-  margin-left: 6vw;
-  margin-right: 6vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
 
 }
 .note-div {
@@ -91,6 +91,10 @@ nav h1 {
 .crazy {
   padding-bottom: 40px;
 }
+
+/* .collection-title {
+  font-family: var(--font-shrikhand);
+} */
 
 .center {
   text-align: center;
@@ -296,7 +300,7 @@ nav h1 {
 
 form.create-note {
   position: relative;
-  width: 480px;
+  /* width: 100px; */
   margin: 30px auto 50px auto;
   background: #fff;
   padding: 25px;
