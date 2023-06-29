@@ -4,14 +4,28 @@ import CreateFlashCard from '@components/FlashCardUI/CreateFlashCard';
 import FlashCardFeed from '@components/FlashCardUI/FlashCardFeed';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon, } from '@mui/material';
 import  ViewCarouselIcon  from '@mui/icons-material/ViewCarousel';
-import Link from "next/link"
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import EditIcon from '@mui/icons-material/Edit';
-import { FlashCardContextProvider, FlashCardContext } from '@components/Contexts/FlashCardContext';
+import {  FlashCardContext } from '@components/Contexts/FlashCardContext';
 import { useRouter } from 'next/navigation';
 import {Box, Grid} from '@mui/material';
 import Item from '@mui/material/Grid';
+import {Container} from '@mui/material';
+import { Shrikhand } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
+import { Textfit } from 'react-textfit';
+//import Box from '@mui/material';
+
+const shrikhand = Shrikhand({
+    subsets: ['latin'],
+    weight: "400",
+})
+
+const bebasNeue = Bebas_Neue({
+    subsets: ['latin'],
+    weight: "400",
+})
 
 const LargeFlashUI = (props) => {
     const router = useRouter();
@@ -27,6 +41,7 @@ const LargeFlashUI = (props) => {
         { icon: <EditIcon />, name: 'Edit Flashcards', href: "/", click: editClicked},
         { icon: <PsychologyIcon/>, name: 'Games', href: "/"},
     ];
+
 
     function editClicked() {
         console.log("Edit Mode Clicked");
@@ -71,27 +86,57 @@ const LargeFlashUI = (props) => {
   
     return (
     <div>  
-            <h1 className='centered-heading'>{collection.name}</h1> 
-            <h1 className='centered-heading'>{collection.description}</h1>
-            <CreateFlashCard 
-                collectionID={props.collectionID} 
-                //onAdd={collectionChanged}
-                inputType={"flashcard"}
-                topPlaceholder={"Add Flashcard Front"}
-                bottomPlaceholder={"Add Flashcard Back"}
-                topName={"front"}
-                bottomName={"back"}
-                //selectedCollection={selectedCollection}
-                //selectedCollection={props.selectedCollection} 
-                //collectionChanged={collectionChanged}
-            />
-            <FlashCardFeed collectionID={props.collectionID} flashCardItems={flashCards} />
             <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={0}>
-                    <Grid item xs={4}>
-                        <Item>xs=4</Item>
+                <Grid container spacing={0} >
+                    <Grid item xs={4} sx={{ display: 'flex', justifyContent: 'center', backgroundColor: "transparent" }}>
+                            <Container maxWidth="100%"  style={{maxHeight: "100%",backgroundColor:"transparent", position:"relative"}} sx={{ margin: '0 auto', display: 'flex' }}>  
+                                
+
+                                <div style={{
+                                    backgroundColor: "transparent",
+                                    width:"100%",
+                                    // height:"40%",
+                                   
+                                }}>
+                                    <Textfit className={bebasNeue.className} style={{margin:"0 0"}} mode="single" min={60} max={100}>
+                                        {collection.name }
+                                    </Textfit>
+                                    <br/>
+                                    <Textfit className={bebasNeue.className} style={{margin:"0 0", width:"100%"}} mode="single" min={2} max={100}>
+                                        {collection.description }
+                                    </Textfit>
+                                </div>
+                                {/* <div style={{
+                                    backgroundColor: "green",
+                                    width:"100%",
+                                    // height:"20%",
+                                    display: "block",
+                                }}>
+                                    <Textfit className={bebasNeue.className} style={{margin:"0 0"}} mode="multi" min={60} max={100}>
+                                        {collection.description }
+                                    </Textfit>
+                                </div> */}
+
+                            </Container>
+
+                        
                     </Grid>
+                    <div styles={{}}></div>
                     <Grid item xs={8}>
+                        <Item>
+                            <CreateFlashCard 
+                                collectionID={props.collectionID} 
+                                //onAdd={collectionChanged}
+                                inputType={"flashcard"}
+                                topPlaceholder={"Add Flashcard Front"}
+                                bottomPlaceholder={"Add Flashcard Back"}
+                                topName={"front"}
+                                bottomName={"back"}
+                                //selectedCollection={selectedCollection}
+                                //selectedCollection={props.selectedCollection} 
+                                //collectionChanged={collectionChanged}
+                            />
+                        </Item>
                         <Item><FlashCardFeed collectionID={props.collectionID} flashCardItems={flashCards} /></Item>
                     </Grid>
                 </Grid>

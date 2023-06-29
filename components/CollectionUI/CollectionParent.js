@@ -6,8 +6,6 @@ import CollectionFeed from './CollectionFeed'
 const CollectionParent = () => {
   const { scrollPosition, updateScrollPosition } = useContext(CollectionContext);
   
-
-
   useEffect(() => {
     // Restore the scroll position on component mount
     window.scrollTo(0, scrollPosition);

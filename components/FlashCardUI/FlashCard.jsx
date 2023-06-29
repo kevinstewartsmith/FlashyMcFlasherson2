@@ -5,6 +5,8 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { PropaneSharp } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import "@styles/globals.css";
+import { Textfit } from 'react-textfit';
+
 export default function FlashCard(props) {
   const [flipped, set] = useState(true);
   const { transform, opacity } = useSpring({
@@ -71,7 +73,10 @@ export default function FlashCard(props) {
               }}
             >
               <div className="center-parent">
-                <h1 className="card-text">{props.front}</h1>
+                {/* <h1 className="card-text">{props.front}</h1> */}
+                <Textfit mode="multi" min={30} max={50}>
+                  {props.front}
+                </Textfit>
               </div>
             </a.div>
             <a.div
@@ -83,7 +88,11 @@ export default function FlashCard(props) {
               }}
             >
               <div className="center-parent">
-                <h1 className="card-text">{props.back}</h1>
+
+                {/* <h1 className="card-text">{props.back}</h1> */}
+                <Textfit mode="multi" min={30} max={50}>
+                  {props.back}
+                </Textfit>
                 {/* <h1>{props.collectionID}</h1> */}
               </div>
             </a.div>
