@@ -26,8 +26,8 @@ const CollectionParent = () => {
   }, [updateScrollPosition]);
 
   return (
-    <div>
-        <CreateCollection
+    <div >
+      <CreateCollection
           //onAdd={collectionChanged}
           inputType={"collection"}
           topPlaceholder={"Add Collection"}
@@ -36,8 +36,9 @@ const CollectionParent = () => {
           bottomName={"content"}
           //selectedCollection={selectedCollection}
 
-        />
-        <CollectionFeed  />
+      />
+      <h1>BBBB</h1>
+      <CollectionFeed  />
     </div>
   )
 }
