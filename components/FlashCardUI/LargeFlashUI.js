@@ -86,8 +86,9 @@ const LargeFlashUI = (props) => {
   
     return (
     <div>  
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={0} >
+    
+            <Box sx={{ flexGrow: 1, alignItems: "center", justifyContent: "center" }}>
+                <Grid container spacing={0}  direction="row">
                     <Grid item xs={4} sx={{ display: 'flex', justifyContent: 'center', backgroundColor: "transparent" }}>
                             <Container maxWidth="100%"  style={{maxHeight: "100%",backgroundColor:"transparent", position:"relative"}} sx={{ margin: '0 auto', display: 'flex' }}>  
                                 
@@ -98,24 +99,35 @@ const LargeFlashUI = (props) => {
                                     // height:"40%",
                                    
                                 }}>
-                                    <Textfit className={bebasNeue.className} style={{margin:"0 0"}} mode="single" min={60} max={100}>
-                                        {collection.name }
-                                    </Textfit>
-                                    <br/>
-                                    <Textfit className={bebasNeue.className} style={{margin:"0 0", width:"100%"}} mode="single" min={2} max={100}>
-                                        {collection.description }
-                                    </Textfit>
+                                <Grid container direction="column" spacing={0} >
+                                    <Grid item xs={4} sx={{ alignItems: 'center',justifyContent:'center', backgroundColor: "transparent", width:"100%" }}>
+                                
+                                        <Textfit className={bebasNeue.className} style={{ width:"auto", backgroundColor:"transparent",}} mode="single" min={60} max={100}>
+                                            {collection.name }
+                                        </Textfit>
+                                        <br/>
+                                        <Textfit className={bebasNeue.className} style={{ margin:"0 0", width:"auto" }} mode="single" min={2} max={100}>
+                                            {collection.description }
+                                        </Textfit>
+                                    </Grid>
+                                    <Grid item xs={4} sx={{  justifyContent: 'center',alignItems:"center", boxSizing: "border-box", backgroundColor: "transparent", width:"100%" }}>
+                                        <CreateFlashCard 
+                                            collectionID={props.collectionID} 
+                                            //onAdd={collectionChanged}
+                                            inputType={"flashcard"}
+                                            topPlaceholder={"Add Flashcard Front"}
+                                            bottomPlaceholder={"Add Flashcard Back"}
+                                            topName={"front"}
+                                            bottomName={"back"}
+                                            //selectedCollection={selectedCollection}
+                                            //selectedCollection={props.selectedCollection} 
+                                            //collectionChanged={collectionChanged}
+                                        />
+                                    </Grid>
+                                </Grid>
+                                    
                                 </div>
-                                {/* <div style={{
-                                    backgroundColor: "green",
-                                    width:"100%",
-                                    // height:"20%",
-                                    display: "block",
-                                }}>
-                                    <Textfit className={bebasNeue.className} style={{margin:"0 0"}} mode="multi" min={60} max={100}>
-                                        {collection.description }
-                                    </Textfit>
-                                </div> */}
+
 
                             </Container>
 
@@ -123,12 +135,12 @@ const LargeFlashUI = (props) => {
                     </Grid>
                     <div styles={{}}></div>
                     <Grid item xs={8}>
-                        <Item>
+                        {/* <Item>
                             <CreateFlashCard 
                                 collectionID={props.collectionID} 
                                 //onAdd={collectionChanged}
                                 inputType={"flashcard"}
-                                topPlaceholder={"Add Flashcard Front"}
+                                topPlaceholder={"IAdd Flashcard Front"}
                                 bottomPlaceholder={"Add Flashcard Back"}
                                 topName={"front"}
                                 bottomName={"back"}
@@ -136,7 +148,7 @@ const LargeFlashUI = (props) => {
                                 //selectedCollection={props.selectedCollection} 
                                 //collectionChanged={collectionChanged}
                             />
-                        </Item>
+                        </Item> */}
                         <Item><FlashCardFeed collectionID={props.collectionID} flashCardItems={flashCards} /></Item>
                     </Grid>
                 </Grid>
@@ -162,10 +174,6 @@ const LargeFlashUI = (props) => {
                 )) }
             </SpeedDial>
 
-          
-        
-
- 
     </div>
   )
 }

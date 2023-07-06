@@ -333,8 +333,8 @@ form.create-note button {
 }
 form.create-note {
   position: relative;
-  width: 480px;
-  margin: 30px auto 70px auto;
+  width:  "100%";
+  /* margin: 30px auto 70px auto; */
   background: #fff;
   padding: 15px;
   border-radius: 7px;
@@ -342,7 +342,7 @@ form.create-note {
 }
 form.create-note input,
 form.create-note textarea {
-  width: 100%;
+  width: "100%";
   border: none;
   padding: 4px;
   outline: none;
@@ -353,9 +353,13 @@ form.create-note textarea {
 
 form.create-note input {
   font-size: 1.2em;
+  width: "100%";
+  display: block;
 }
 form.create-note textarea {
   font-size: 0.8em;
+  width: "100%";
+  display: block;
 }
 form.create-note button {
   position: absolute;

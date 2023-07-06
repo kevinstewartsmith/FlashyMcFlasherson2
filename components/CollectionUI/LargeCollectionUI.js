@@ -33,6 +33,7 @@ const LargeCollectionUI = () => {
 
   return (
     <div >
+    
         <CreateCollection
           //onAdd={collectionChanged}
           inputType={"collection"}

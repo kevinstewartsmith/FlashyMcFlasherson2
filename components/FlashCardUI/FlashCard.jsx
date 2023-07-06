@@ -74,7 +74,8 @@ export default function FlashCard(props) {
             >
               <div className="center-parent">
                 {/* <h1 className="card-text">{props.front}</h1> */}
-                <Textfit mode="multi" min={30} max={50}>
+                
+                <Textfit mode="multi" min={30} max={50} style={{ alignItems: "center", justifyContent:"center", padding:"4px"}}>
                   {props.front}
                 </Textfit>
               </div>
