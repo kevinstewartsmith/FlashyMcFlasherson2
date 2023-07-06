@@ -109,6 +109,7 @@ const CreateFlashCard = (props) => {
               placeholder={"Add Flashcard Back"}
               //rows={rows}
               type="text"
+              style={{ height: 100 }}
             />
             <Container style={{marginTop: "16px"}}>
             <Grid container  spacing={2} style={{ padding: 0 }}>

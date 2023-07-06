@@ -12,10 +12,11 @@ import { useRouter } from 'next/navigation';
 import {Box, Grid} from '@mui/material';
 import Item from '@mui/material/Grid';
 import {Container} from '@mui/material';
-import { Shrikhand } from "next/font/google";
+import { Shrikhand, Roboto } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
 import { Textfit } from 'react-textfit';
 //import Box from '@mui/material';
+import { IconButton } from '@mui/material';
 
 const shrikhand = Shrikhand({
     subsets: ['latin'],
@@ -25,6 +26,20 @@ const shrikhand = Shrikhand({
 const bebasNeue = Bebas_Neue({
     subsets: ['latin'],
     weight: "400",
+})
+
+const roboto = Roboto({
+    subsets: ['latin'],
+    weight: "400",
+})
+const roboto_bold = Roboto({
+    subsets: ['latin'],
+    weight: "700",
+})
+const roboto_italic = Roboto({
+    subsets: ['latin'],
+    weight: "400",
+    style: "italic"
 })
 
 const LargeFlashUI = (props) => {
@@ -102,11 +117,11 @@ const LargeFlashUI = (props) => {
                                 <Grid container direction="column" spacing={0} >
                                     <Grid item xs={4} sx={{ alignItems: 'center',justifyContent:'center', backgroundColor: "transparent", width:"100%" }}>
                                 
-                                        <Textfit className={bebasNeue.className} style={{ width:"auto", backgroundColor:"transparent",}} mode="single" min={10} max={100}>
+                                        <Textfit className={roboto_bold.className} style={{ width:"auto", backgroundColor:"transparent",}} mode="single" min={10} max={100}>
                                             {collection.name }
                                         </Textfit>
-                                        <br/>
-                                        <Textfit className={bebasNeue.className} style={{ margin:"0 0", width:"auto" }} mode="single" min={2} max={100}>
+                                        {/* <br/> */}
+                                        <Textfit className={roboto_italic.className} style={{ margin:"0 0", width:"auto" }} mode="single" min={2} max={100}>
                                             {collection.description }
                                         </Textfit>
                                     </Grid>
@@ -123,6 +138,25 @@ const LargeFlashUI = (props) => {
                                             //selectedCollection={props.selectedCollection} 
                                             //collectionChanged={collectionChanged}
                                         />
+                                        <Grid container spacing={0}  direction="column" style={{height: "10vh", width:"100%"}}>
+                                        { actions.map((action,idx) => ( 
+                                            <Grid item key={idx} xs={2} sx={{ display:"flex", justifyContent: 'center',alignItems:"center", boxSizing: "border-box", backgroundColor: "transparent", height:"100%" }}>
+                                                <IconButton 
+                                                    key={idx}  
+                                                    style={{ 
+                                                        borderColor: "red", 
+                                                        backgroundColor: "white", 
+                                                        borderWidth:"10px", 
+                                                        height:"60px", 
+                                                        width:"60px"}}>
+                                                    {action.icon}
+                                                </IconButton>
+                                            </Grid>
+                                        
+                                        ))}
+                                        </Grid>
+                                       
+
                                     </Grid>
                                 </Grid>
                                     
