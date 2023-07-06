@@ -7,6 +7,9 @@ import Zoom from "@mui/material/Zoom";
 import Alert from '@mui/material/Alert';
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import {Box, Grid} from '@mui/material';
+import Image from "next/image";
+import {Container} from '@mui/material';
 //import globals from styles folder
 import "@styles/globals.css";
 
@@ -98,6 +101,7 @@ const CreateFlashCard = (props) => {
             value={flashCardData.front}
           />
           {expanded ? (
+            <>
             <textarea
               name={"back"}
               onChange={handleInputText}
@@ -106,6 +110,44 @@ const CreateFlashCard = (props) => {
               //rows={rows}
               type="text"
             />
+            <Container style={{marginTop: "16px"}}>
+            <Grid container  spacing={2} style={{ padding: 0 }}>
+              <Grid item xs={2} style={{ padding: 0 }}>
+                {/* <Box sx={{ width: '100%'}}> */}
+                 
+                {/* </Box> */}
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
+                  
+                  <p ><strong>APIs</strong></p>
+                </div>
+              </Grid>
+              
+              <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
+                {/* <div sx={{  display: 'flex', justifyContent: 'center', alignItems: 'center' }}>  */}
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
+                  <Image src="/wiki-icon.png" alt="Wiki" width={70} height={70} />
+                {/* </div> */}
+                </div>
+              </Grid>
+              <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }} >
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
+                  <Image src="/worknik-icon.png" alt="Wiki" width={50} height={50} />
+                </div>
+
+              </Grid>
+              <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
+                  <Image src="/lingua-robot-icon.png" alt="Wiki" width={50} height={50} />
+                </div>
+              </Grid>
+              <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
+                  <Image src="/oxford-dictionary-logo.png" alt="Wiki" width={150} height={50} />
+                </div>
+              </Grid>
+            </Grid>
+            </Container>
+            </>
           ) : null}
           
           <Zoom in={expanded}>

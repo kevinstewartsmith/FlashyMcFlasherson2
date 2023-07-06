@@ -88,8 +88,8 @@ const LargeFlashUI = (props) => {
     <div>  
     
             <Box sx={{ flexGrow: 1, alignItems: "center", justifyContent: "center" }}>
-                <Grid container spacing={0}  direction="row">
-                    <Grid item xs={4} sx={{ display: 'flex', justifyContent: 'center', backgroundColor: "transparent" }}>
+                <Grid container spacing={0}  direction="row" style={{height: "85vh"}}>
+                    <Grid item xs={4} sx={{ display: 'flex', justifyContent: 'center', backgroundColor: "transparent"  }}>
                             <Container maxWidth="100%"  style={{maxHeight: "100%",backgroundColor:"transparent", position:"relative"}} sx={{ margin: '0 auto', display: 'flex' }}>  
                                 
 
@@ -102,7 +102,7 @@ const LargeFlashUI = (props) => {
                                 <Grid container direction="column" spacing={0} >
                                     <Grid item xs={4} sx={{ alignItems: 'center',justifyContent:'center', backgroundColor: "transparent", width:"100%" }}>
                                 
-                                        <Textfit className={bebasNeue.className} style={{ width:"auto", backgroundColor:"transparent",}} mode="single" min={60} max={100}>
+                                        <Textfit className={bebasNeue.className} style={{ width:"auto", backgroundColor:"transparent",}} mode="single" min={10} max={100}>
                                             {collection.name }
                                         </Textfit>
                                         <br/>
@@ -110,7 +110,7 @@ const LargeFlashUI = (props) => {
                                             {collection.description }
                                         </Textfit>
                                     </Grid>
-                                    <Grid item xs={4} sx={{  justifyContent: 'center',alignItems:"center", boxSizing: "border-box", backgroundColor: "transparent", width:"100%" }}>
+                                    <Grid item xs={8} sx={{  justifyContent: 'center',alignItems:"center", boxSizing: "border-box", backgroundColor: "transparent", width:"100%" }}>
                                         <CreateFlashCard 
                                             collectionID={props.collectionID} 
                                             //onAdd={collectionChanged}
