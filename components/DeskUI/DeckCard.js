@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useSpring, a,  } from "@react-spring/web";
-
+import { Textfit } from 'react-textfit';
 import "@styles/globals.css";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { PropaneSharp } from "@mui/icons-material";
@@ -42,8 +42,8 @@ export default function DeckCard(props) {
 
 
   return (
-    <div>
-      <div>
+    
+      
         <div className="deck-card note-div">
           <div className="flash" onClick={() => set((state) => !state)}>
 
@@ -58,7 +58,10 @@ export default function DeckCard(props) {
             >
               <div className="center-parent">
               
-                <h1 className="card-text unhighlight-text">{props.front}</h1>
+                {/* <h1 className="card-text unhighlight-text">{props.front}</h1> */}
+                <Textfit className="card-text unhighlight-text" mode="multi" min={1} max={100}>
+                  {props.front}
+                </Textfit>
               
               </div>
             </a.div>
@@ -70,15 +73,18 @@ export default function DeckCard(props) {
                 borderRadius: 7
               }}
             >
-              <div className="center-parent">
-                <h1 className="card-text unhighlight-text">{props.back}</h1>
-                <h1 className="card-text unhighlight-text">{props.collectionID}</h1>
-              </div>
+              {/* <div className="center-parent"> */}
+                {/* <h1 className="card-text unhighlight-text">{props.back}</h1>
+                <h1 className="card-text unhighlight-text">{props.collectionID}</h1> */}
+                <Textfit className="card-text unhighlight-text" mode="multi" min={1} max={100}>
+                  {props.back}
+                </Textfit>
+              {/* </div> */}
             </a.div>
           </div>
           
         </div>  
-      </div>
-    </div>
+      
+    
   );
 }
