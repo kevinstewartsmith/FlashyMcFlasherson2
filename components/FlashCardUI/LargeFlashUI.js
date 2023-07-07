@@ -2,21 +2,24 @@
 import { useEffect, useState, useContext } from 'react';
 import CreateFlashCard from '@components/FlashCardUI/CreateFlashCard';
 import FlashCardFeed from '@components/FlashCardUI/FlashCardFeed';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon, } from '@mui/material';
+import { SpeedDial, SpeedDialAction, SpeedDialIcon, Container, Box, Grid, IconButton } from '@mui/material';
 import  ViewCarouselIcon  from '@mui/icons-material/ViewCarousel';
+//import { ViewCarouselIcon } from '@mui/icons-material';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
+//import DashboardCustomize from '@mui/icons-material/DashboardCustomize';
 import PsychologyIcon from '@mui/icons-material/Psychology';
-import EditIcon from '@mui/icons-material/Edit';
-import {  FlashCardContext } from '@components/Contexts/FlashCardContext';
+import { Psychology, Edit, DashboardCustomize, ViewCarousel  } from '@mui/icons-material/';
+//import EditIcon from '@mui/icons-material/Edit';
+import { FlashCardContext } from '@components/Contexts/FlashCardContext';
 import { useRouter } from 'next/navigation';
-import {Box, Grid} from '@mui/material';
+//import {Box, Grid, IconButton} from '@mui/material';
 import Item from '@mui/material/Grid';
-import {Container} from '@mui/material';
+//import {Container} from '@mui/material';
 import { Shrikhand, Roboto } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
 import { Textfit } from 'react-textfit';
 //import Box from '@mui/material';
-import { IconButton } from '@mui/material';
+//import { IconButton } from '@mui/material';
 
 const shrikhand = Shrikhand({
     subsets: ['latin'],
@@ -51,10 +54,10 @@ const LargeFlashUI = (props) => {
     const { flashCards, updateFlashCards, collection, updateCollection  } = useContext(FlashCardContext);
     const actions = [
         // { icon: <Link href={`/desk/${collectionID}`}><ViewCarouselIcon /></Link>, name: 'Review Flashcards' },
-        { icon: <ViewCarouselIcon onClick={togglePracticeMode} />, name: 'Review Flashcards', click: reviewFCClicked },
-        { icon: <DashboardCustomizeIcon />, name: 'Add Flashcard', href: "/" },
-        { icon: <EditIcon />, name: 'Edit Flashcards', href: "/", click: editClicked},
-        { icon: <PsychologyIcon/>, name: 'Games', href: "/"},
+        { icon: <ViewCarousel onClick={togglePracticeMode} color='white' />, name: 'Review Flashcards', click: reviewFCClicked },
+        { icon: <DashboardCustomize color='white' />, name: 'Add Flashcard', href: "/" },
+        { icon: <Edit color='white' />, name: 'Edit Flashcards', href: "/", click: editClicked},
+        { icon: <Psychology color='white' />, name: 'Games', href: "/"},
     ];
 
 
@@ -121,7 +124,7 @@ const LargeFlashUI = (props) => {
                                             {collection.name }
                                         </Textfit>
                                         {/* <br/> */}
-                                        <Textfit className={roboto_italic.className} style={{ margin:"0 0", width:"auto" }} mode="single" min={2} max={100}>
+                                        <Textfit className={roboto_italic.className} style={{ margin:"0 0", width:"auto" }} mode="single" min={2} max={60}>
                                             {collection.description }
                                         </Textfit>
                                     </Grid>
@@ -138,25 +141,28 @@ const LargeFlashUI = (props) => {
                                             //selectedCollection={props.selectedCollection} 
                                             //collectionChanged={collectionChanged}
                                         />
-                                        <Grid container spacing={0}  direction="column" style={{height: "10vh", width:"100%"}}>
-                                        { actions.map((action,idx) => ( 
-                                            <Grid item key={idx} xs={2} sx={{ display:"flex", justifyContent: 'center',alignItems:"center", boxSizing: "border-box", backgroundColor: "transparent", height:"100%" }}>
-                                                <IconButton 
-                                                    key={idx}  
-                                                    style={{ 
-                                                        borderColor: "red", 
-                                                        backgroundColor: "white", 
-                                                        borderWidth:"10px", 
-                                                        height:"60px", 
-                                                        width:"60px"}}>
-                                                    {action.icon}
-                                                </IconButton>
-                                            </Grid>
-                                        
-                                        ))}
-                                        </Grid>
-                                       
+                                        <Grid container spacing={0}  direction="column" style={{height: "10vh", width:"100%", paddingLeft: 80, paddingRight: 80}}>
+                                            { actions.map((action,idx) => ( 
+                                                <Grid item key={idx} xs={2} sx={{ display:"flex", justifyContent: 'center',alignItems: "center", boxSizing: "border-box", backgroundColor: "transparent", height:"100%" }}>
+                                                    <IconButton 
+                                                        key={idx}  
+                                                        onClick={action.click}
+                                                        style={{ 
 
+                                                            borderColor: "red", 
+                                                            backgroundColor: "#1876D2", 
+                                                            borderWidth:"10px", 
+                                                            height:"60px", 
+                                                            width:"60px"
+                                                        }}
+                                                            //tooltipTitle={action.name}
+                                                            
+                                                        >
+                                                        {action.icon}
+                                                    </IconButton>
+                                                </Grid>
+                                            ))}
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                                     
@@ -169,20 +175,7 @@ const LargeFlashUI = (props) => {
                     </Grid>
                     <div styles={{}}></div>
                     <Grid item xs={8}>
-                        {/* <Item>
-                            <CreateFlashCard 
-                                collectionID={props.collectionID} 
-                                //onAdd={collectionChanged}
-                                inputType={"flashcard"}
-                                topPlaceholder={"IAdd Flashcard Front"}
-                                bottomPlaceholder={"Add Flashcard Back"}
-                                topName={"front"}
-                                bottomName={"back"}
-                                //selectedCollection={selectedCollection}
-                                //selectedCollection={props.selectedCollection} 
-                                //collectionChanged={collectionChanged}
-                            />
-                        </Item> */}
+
                         <Item><FlashCardFeed collectionID={props.collectionID} flashCardItems={flashCards} /></Item>
                     </Grid>
                 </Grid>

@@ -69,13 +69,18 @@ export default function FlashCard(props) {
                 opacity,
                 transform,
                 rotateX: "180deg",
-                borderRadius: 7
+                borderRadius: 7,
+                display: "flex",
+                alignItems: "center",
+                justifyContent:"center",
+                height: "100%",
+                width: "100%"
               }}
             >
-              <div className="center-parent">
+              <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
                 {/* <h1 className="card-text">{props.front}</h1> */}
                 
-                <Textfit mode="multi" min={30} max={50} style={{ alignItems: "center", justifyContent:"center", padding:"4px"}}>
+                <Textfit mode="multi" min={1} max={80} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
                   {props.front}
                 </Textfit>
               </div>
@@ -85,13 +90,18 @@ export default function FlashCard(props) {
               style={{
                 opacity: opacity.to((o) => 1 - o),
                 transform,
-                borderRadius: 7
+                borderRadius: 7,
+                display: "flex",
+                alignItems: "center",
+                justifyContent:"center",
+                height: "100%",
+                width: "100%"
               }}
             >
-              <div className="center-parent">
+              <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
 
                 {/* <h1 className="card-text">{props.back}</h1> */}
-                <Textfit mode="multi" min={30} max={50}>
+                <Textfit mode="multi" min={20} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
                   {props.back}
                 </Textfit>
                 {/* <h1>{props.collectionID}</h1> */}
