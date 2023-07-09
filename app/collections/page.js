@@ -5,7 +5,10 @@ import CollectionParent from "@components/CollectionUI/CollectionParent";
 function CollectionUI (props) {
 
     return (
-        <CollectionParent />
+        <div styles={{ width: "80vw" }} >
+            <CollectionParent  />
+        </div>
+        
     )
 }
 

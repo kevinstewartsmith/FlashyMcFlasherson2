@@ -3,12 +3,13 @@ import { useEffect, useState, useContext } from 'react';
 import CreateFlashCard from '@components/FlashCardUI/CreateFlashCard';
 import FlashCardFeed from '@components/FlashCardUI/FlashCardFeed';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon, Container, Box, Grid, IconButton } from '@mui/material';
+import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import  ViewCarouselIcon  from '@mui/icons-material/ViewCarousel';
 //import { ViewCarouselIcon } from '@mui/icons-material';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 //import DashboardCustomize from '@mui/icons-material/DashboardCustomize';
 import PsychologyIcon from '@mui/icons-material/Psychology';
-import { Psychology, Edit, DashboardCustomize, ViewCarousel  } from '@mui/icons-material/';
+import { Psychology, Edit, DashboardCustomize, ViewCarousel, ElectricBolt  } from '@mui/icons-material/';
 //import EditIcon from '@mui/icons-material/Edit';
 import { FlashCardContext } from '@components/Contexts/FlashCardContext';
 import { useRouter } from 'next/navigation';
@@ -18,8 +19,8 @@ import Item from '@mui/material/Grid';
 import { Shrikhand, Roboto } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
 import { Textfit } from 'react-textfit';
-//import Box from '@mui/material';
-//import { IconButton } from '@mui/material';
+
+import { useSpring, animated } from 'react-spring';
 
 const shrikhand = Shrikhand({
     subsets: ['latin'],
@@ -46,6 +47,13 @@ const roboto_italic = Roboto({
 })
 
 const LargeFlashUI = (props) => {
+    const [iconIsClicked, setIconIsClicked] = useState(false);
+
+    const springProps = useSpring({
+      rotate: iconIsClicked ? 360 : 0,
+    });
+
+
     const router = useRouter();
     const [flashCardItems, setFlashCardItems] = useState([]);
     const collectionID = props.collectionID
@@ -54,10 +62,10 @@ const LargeFlashUI = (props) => {
     const { flashCards, updateFlashCards, collection, updateCollection  } = useContext(FlashCardContext);
     const actions = [
         // { icon: <Link href={`/desk/${collectionID}`}><ViewCarouselIcon /></Link>, name: 'Review Flashcards' },
-        { icon: <ViewCarousel onClick={togglePracticeMode} color='white' />, name: 'Review Flashcards', click: reviewFCClicked },
-        { icon: <DashboardCustomize color='white' />, name: 'Add Flashcard', href: "/" },
-        { icon: <Edit color='white' />, name: 'Edit Flashcards', href: "/", click: editClicked},
-        { icon: <Psychology color='white' />, name: 'Games', href: "/"},
+        { icon: <ViewCarousel onClick={togglePracticeMode} style={{ color:"white", fontSize:"2rem" }} />, name: 'Review Flashcards', click: reviewFCClicked },
+        { icon: <DashboardCustomize style={{ color:"white", fontSize:"2rem" }}  />, name: 'Add Flashcard', href: "/" },
+        { icon: <Edit style={{ color:"white", fontSize:"2rem" }} />, name: 'Edit Flashcards', href: "/", click: editClicked},
+        { icon: <Psychology style={{ color:"white", fontSize:"2rem" }} />, name: 'Games', href: "/"},
     ];
 
 
@@ -99,7 +107,10 @@ const LargeFlashUI = (props) => {
         //setFlashCardItems(data)
         updateFlashCards(data)
     }
-  
+
+    const handleLightningClick = () => {
+        setIconIsClicked(!iconIsClicked)
+    }
   
   
     return (
@@ -129,6 +140,38 @@ const LargeFlashUI = (props) => {
                                         </Textfit>
                                     </Grid>
                                     <Grid item xs={8} sx={{  justifyContent: 'center',alignItems:"center", boxSizing: "border-box", backgroundColor: "transparent", width:"100%" }}>
+                                        <div style={{ width:"100%", height: 40, backgroundColor:"transparent", display:"flex", alignItems:"center", justifyContent:"center", marginBottom:10, marginTop:20 }}>
+                                            <div style={{
+                                                width: '40%',
+                                                height: '1px',
+                                                backgroundColor: 'black',
+                                                marginRight: 10,
+                                                marginLeft: 50
+                                            }} />
+                                            <IconButton onClick={handleLightningClick}>
+                                                <animated.div style={springProps}>
+                                                    <ElectricBoltIcon style={{fontSize: '3rem', color:"yellow"}} />
+                                                </animated.div>
+                                            </IconButton>
+                                            
+                                            <div style={{
+                                                width: '40%',
+                                                height: '1px',
+                                                backgroundColor: 'black',
+                                                marginLeft: 10,
+                                                marginRight: 50,
+                                            }} />
+                                            
+                                        </div>
+                                        
+                                        { iconIsClicked ?
+                                        <div style={{
+                                            backgroundColor: "#E0E0E0",
+                                            borderRadius: 25,
+                                            padding:25,
+                                            borderWidth: 2,
+                                            borderColor: "black",
+                                        }}>
                                         <CreateFlashCard 
                                             collectionID={props.collectionID} 
                                             //onAdd={collectionChanged}
@@ -163,6 +206,10 @@ const LargeFlashUI = (props) => {
                                                 </Grid>
                                             ))}
                                         </Grid>
+
+                                        </div>
+                                        : null }
+
                                     </Grid>
                                 </Grid>
                                     

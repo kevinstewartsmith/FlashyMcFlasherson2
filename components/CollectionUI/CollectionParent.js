@@ -37,7 +37,7 @@ const CollectionParent = () => {
           //selectedCollection={selectedCollection}
 
       />
-      <h1>BBBB</h1>
+      
       <CollectionFeed  />
     </div>
   )
