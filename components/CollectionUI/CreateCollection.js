@@ -71,7 +71,7 @@ function CreateCollection(props) {
   }
 
   return (
-    <div>  
+  
       <form className="create-note">
         <input
           name={props.topName}
@@ -98,7 +98,7 @@ function CreateCollection(props) {
           </Fab>
         </Zoom>
       </form>
-    </div>
+  
   );
 }
 export default CreateCollection;

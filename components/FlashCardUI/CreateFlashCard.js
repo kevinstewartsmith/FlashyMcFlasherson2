@@ -1,16 +1,13 @@
 "use client"
-
 import React, { useState, useContext, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
-import Alert from '@mui/material/Alert';
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import {Box, Grid} from '@mui/material';
+import { Grid } from '@mui/material';
 import Image from "next/image";
 import {Container} from '@mui/material';
-//import globals from styles folder
 import "@styles/globals.css";
 
 
@@ -20,15 +17,13 @@ const CreateFlashCard = (props) => {
     const { data: session } = useSession()
     const [expanded, setExpansion] = useState(false);
     const [flashCardData, setFlashCardData] = useState({ front: "", back: "" });
-    //const {toggleTrigger} = useContext(CollectionContext);
-
 
     function handleClick() {  
         setExpansion(!expanded);
     }
     
-      function handleInputText(event) {
-        const { name, value } = event.target;
+    function handleInputText(event) {
+      const { name, value } = event.target;
     
         setFlashCardData((prevValue) => {
           if (name === "front" ) {
@@ -56,8 +51,6 @@ const CreateFlashCard = (props) => {
       // getWiki()
       // console.log(getWiki())
 
-      
-    
       const submitNote = async (event) => {
         const front = flashCardData.front
         const back = flashCardData.back
@@ -85,9 +78,6 @@ const CreateFlashCard = (props) => {
           } catch (error) {
             console.log(error);
           } 
-        //   finally {
-        //     //toggleTrigger()
-        //   }
     }
     return (
         <div style={{width: "100%", }}>  
@@ -114,27 +104,19 @@ const CreateFlashCard = (props) => {
             <Container style={{marginTop: "16px"}}>
             <Grid container  spacing={2} style={{ padding: 0 }}>
               <Grid item xs={2} style={{ padding: 0 }}>
-                {/* <Box sx={{ width: '100%'}}> */}
-                 
-                {/* </Box> */}
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
-                  
                   <p ><strong>APIs</strong></p>
                 </div>
               </Grid>
-              
               <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
-                {/* <div sx={{  display: 'flex', justifyContent: 'center', alignItems: 'center' }}>  */}
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
                   <Image src="/wiki-icon.png" alt="Wiki" width={70} height={70} />
-                {/* </div> */}
                 </div>
               </Grid>
               <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }} >
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
                   <Image src="/worknik-icon.png" alt="Wiki" width={50} height={50} />
                 </div>
-
               </Grid>
               <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>

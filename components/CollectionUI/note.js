@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import Zoom from "@mui/material/Zoom";
 import '@styles/globals.css'
 import { Montserrat } from "next/font/google";
-import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { FlashCardContext } from "@components/Contexts/FlashCardContext";
 
