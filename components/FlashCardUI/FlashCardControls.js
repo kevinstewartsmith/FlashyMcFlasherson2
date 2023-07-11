@@ -77,6 +77,7 @@ const FlashCardControls = (props) => {
                 bottomPlaceholder={"Add Flashcard Back"}
                 topName={"front"}
                 bottomName={"back"}
+                flashCardCreated={props.flashCardCreated}
 
             />
             <Grid container spacing={0}  direction="column" style={{height: "10vh", width:"100%", paddingLeft: 80, paddingRight: 80}}>

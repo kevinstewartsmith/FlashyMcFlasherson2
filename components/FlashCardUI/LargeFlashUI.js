@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import FlashCardFeed from '@components/FlashCardUI/FlashCardFeed';
 import {  Container, Box, Grid } from '@mui/material';
 import { FlashCardContext } from '@components/Contexts/FlashCardContext';
@@ -21,11 +21,15 @@ const roboto_italic = Roboto({
 const LargeFlashUI = (props) => {
     const collectionID = props.collectionID
     const { flashCards, updateFlashCards, collection, updateCollection  } = useContext(FlashCardContext);
+    const [newFlashCards, setNewFlashCards] = useState(0);
+    function flashCardCreated() {
+        setNewFlashCards(newFlashCards + 1)
+    }
 
     useEffect(() => {     
         fetchCollections()
         fetchFlashCards()
-    },[]);
+    },[newFlashCards]);
     
     const fetchCollections = async () => {
         const res = await fetch(`/api/collection/gallery/${collectionID}`)
@@ -59,7 +63,7 @@ const LargeFlashUI = (props) => {
                                         </Textfit>
                                     </Grid>
                                     <Grid item xs={8} sx={{  justifyContent: 'center',alignItems:"center", boxSizing: "border-box", backgroundColor: "transparent", width:"100%" }}>
-                                        <FlashCardControls collectionID={props.collectionID} />  
+                                        <FlashCardControls collectionID={props.collectionID} flashCardCreated={flashCardCreated} />  
                                     </Grid>
                                 </Grid>        
                             </div>
