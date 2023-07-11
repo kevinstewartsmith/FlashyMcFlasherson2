@@ -4,7 +4,7 @@ import { Grid } from '@mui/material'
 import Note from '@components/CollectionUI/note'
 import { CollectionContext } from '../Contexts/CollectionContext'
 
-const CollectionList = ({data}) => {
+const CollectionList = ({data,onCollectionDelete}) => {
     return (
         <div className='collection-feed'> 
             <Grid
@@ -15,17 +15,18 @@ const CollectionList = ({data}) => {
                 justify="space-evenly"
                 alignItems="center"
             >       
-                {data.map((collection,idx) => (
+                { data.map((collection,idx) => (
                     <Grid key={idx} item padding={1} xs={12} sm={6} md={4} >
                         <Note
                             key={idx}
                             id={collection._id}
                             collectionName={collection.name}
                             description={collection.description}
+                            onCollectionDelete={onCollectionDelete}
 
                         />
                     </Grid>
-                ))}
+                )) }
             </Grid>    
         </div>   
     )
@@ -36,13 +37,14 @@ const CollectionList = ({data}) => {
 const CollectionFeed = (props) => {
     const [collectionItems,setCollectionItems] = useState([]);
     const { trigger,restoreScrollPosition } = useContext(CollectionContext);
-    
+    const [collectionDeleteCount, setCollectionDeleteCount] = useState(0);
+    function onCollectionDelete() {
+        setCollectionDeleteCount(collectionDeleteCount + 1)
+    }
 
     useEffect(() => {
-        
         fetchCollections()
-         
-    },[trigger]);
+    },[trigger, collectionDeleteCount]);
 
 
 
@@ -50,7 +52,6 @@ const CollectionFeed = (props) => {
         const res = await fetch('/api/collection/all')
         const data = await res.json()
         console.log(data);
-        
         setCollectionItems(data)
 
     }
@@ -59,7 +60,10 @@ const CollectionFeed = (props) => {
 
   return (
     <div>       
-        <CollectionList data={collectionItems} />
+        <CollectionList 
+            data={collectionItems}
+            onCollectionDelete={onCollectionDelete}
+        />
     </div>
   )
 }

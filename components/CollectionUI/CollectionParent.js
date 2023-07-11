@@ -1,11 +1,16 @@
-import { useContext, useEffect } from 'react'
+"use client";
+import { useContext, useEffect, useState } from 'react'
 import { CollectionContext } from '../Contexts/CollectionContext';
 import CreateCollection from './CreateCollection'
 import CollectionFeed from './CollectionFeed'
 
 const CollectionParent = () => {
   const { scrollPosition, updateScrollPosition } = useContext(CollectionContext);
+  const [collectionCount, setCollectionCount] = useState(0);
   
+  function collectionChanged() {
+    setCollectionCount(collectionCount + 1);
+  }
   useEffect(() => {
     // Restore the scroll position on component mount
     window.scrollTo(0, scrollPosition);
@@ -14,7 +19,7 @@ const CollectionParent = () => {
   useEffect(() => {
     // Update the scroll position when it changes
     const handleScroll = () => {
-      updateScrollPosition(window.pageYOffset);
+      updateScrollPosition(window.scrollY);
       console.log("scrollPosition: " + scrollPosition);
     };
 
@@ -23,7 +28,7 @@ const CollectionParent = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [updateScrollPosition]);
+  }, [updateScrollPosition, collectionCount]);
 
   return (
     <div >
@@ -34,11 +39,11 @@ const CollectionParent = () => {
           bottomPlaceholder={"Description (optional)"}
           topName={"title"}
           bottomName={"content"}
+          collectionChanged={collectionChanged}
           //selectedCollection={selectedCollection}
-
       />
       
-      <CollectionFeed  />
+      <CollectionFeed collectionChanged={collectionChanged} />
     </div>
   )
 }

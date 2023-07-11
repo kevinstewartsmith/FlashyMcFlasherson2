@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import '@styles/globals.css'
 import { Montserrat } from "next/font/google";
 import { useRouter } from 'next/navigation';
 import { FlashCardContext } from "@components/Contexts/FlashCardContext";
+import '@styles/globals.css'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -21,23 +21,18 @@ function Note(props) {
   }
 
   const clickDelete = async (event) => {
-
     event.preventDefault();
-   
     console.log("delete clicked");
     
     try{
-
       const response = await fetch(`/api/collection/delete/${props.id}`,{ method: "DELETE" })
-
       if (response.ok) {
-        router.push("/");
+        //router.push("/");
+        props.onCollectionDelete();
       }
     } catch (error) {
       console.log(error);
-    } finally {
-      
-    }
+    } 
   }
   const handleClick = async (event) => {
     event.preventDefault();
@@ -55,18 +50,15 @@ function Note(props) {
         onClick={handleClick}
       >
       <div >
-
-        <div className="note-div">
-          <div className="center">
-            <h1 className={montserrat.className}>{props.collectionName}</h1>
-            <p>{mouseEntered ? props.description  : null}</p>
-          </div> 
-        </div>
-
-        </div>
+          <div className="note-div">
+            <div className="center">
+              <h1 className={montserrat.className}>{props.collectionName}</h1>
+              <p>{mouseEntered ? props.description  : null}</p>
+            </div> 
+          </div>
       </div>
-
-      
+      </div>
+ 
       <div className="delete-button-container" onClick={clickDelete}>
         <DeleteOutlinedIcon className="delete-button" />
       </div>
