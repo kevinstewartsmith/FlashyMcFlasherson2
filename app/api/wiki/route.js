@@ -13,6 +13,9 @@ export const GET = async (req,res) => {
       console.log(data);
       const pageId = Object.keys(data.query.pages)[0];
       const introParagraph = data.query.pages[pageId].extract;
+
+  
+
       return new Response(JSON.stringify(introParagraph), { status: 200 })
 
     } catch (error) {

@@ -49,10 +49,17 @@ const CreateFlashCard = (props) => {
           //setIntroParagraph(data.introParagraph);
           console.log(data);
           console.log(typeof data);
+              // Remove HTML tags and extract text content
+          const parser = new DOMParser();
+          const sanitizedHTML = parser.parseFromString(data, 'text/html');
+          const textContent = sanitizedHTML.body.textContent;
+
+
+
           setFlashCardData((prevValue) => {
               return {
                 front: prevValue.front,
-                back: data
+                back: textContent
               };
           });
 
