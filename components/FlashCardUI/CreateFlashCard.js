@@ -11,6 +11,7 @@ import {Container} from '@mui/material';
 import "@styles/globals.css";
 
 
+
 const CreateFlashCard = (props) => {
 
     const router = useRouter()
@@ -41,15 +42,24 @@ const CreateFlashCard = (props) => {
         console.log(flashCardData);
       }
 
-      // connect to the wikipedia api and get the intro paragraph of flashCardData.front using async await
-      // const getWiki = async () => {
-      //   const response = await fetch(`https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${flashCardData.front}`)
-      //   const data = await response.json()
-      //   console.log(data)
-      //   return data
-      // }
-      // getWiki()
-      // console.log(getWiki())
+      const handleButtonClick = async () => {
+        try {
+          const response = await fetch(`/api/wiki/`);
+          const data = await response.json();
+          //setIntroParagraph(data.introParagraph);
+          console.log(data);
+          console.log(typeof data);
+          setFlashCardData((prevValue) => {
+              return {
+                front: prevValue.front,
+                back: data
+              };
+          });
+
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
 
       const submitNote = async (event) => {
         const front = flashCardData.front
@@ -109,7 +119,7 @@ const CreateFlashCard = (props) => {
                 </div>
               </Grid>
               <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
+                <div onClick={handleButtonClick} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
                   <Image src="/wiki-icon.png" alt="Wiki" width={70} height={70} />
                 </div>
               </Grid>
