@@ -22,6 +22,9 @@ const FlashCardControls = (props) => {
 
     const springProps = useSpring({
         rotate: iconIsClicked ? 360 : 0,
+        backgroundColor: iconIsClicked ? '#1876D2' : 'transparent',
+        borderRadius:  '50%',
+        width: '3rem',
       });
 
     const actions = [
@@ -34,7 +37,7 @@ const FlashCardControls = (props) => {
   
     return (
         <>
-        <div style={{ width:"100%", height: 40, backgroundColor:"transparent", display:"flex", alignItems:"center", justifyContent:"center", marginBottom:10, marginTop:20 }}>
+        <div style={{ width:"100%", height: 40, backgroundColor:"transparent", display:"flex", alignItems:"center", justifyContent:"center", marginBottom:25, marginTop:20 }}>
         <div style={{
             width: '40%',
             height: '1px',
