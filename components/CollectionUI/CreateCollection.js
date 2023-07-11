@@ -3,10 +3,8 @@ import React, { useState, useContext } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
-import Alert from '@mui/material/Alert';
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-//import globals from styles folder
 import "@styles/globals.css";
 import { CollectionContext } from "../Contexts/CollectionContext";
 
@@ -61,7 +59,8 @@ function CreateCollection(props) {
         });
 
         if (response.ok) {
-          router.push("/");
+          //router.push("/");
+          props.collectionAdded();
         }
       } catch (error) {
         console.log(error);

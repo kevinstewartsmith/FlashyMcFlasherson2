@@ -3,15 +3,12 @@ import { useContext, useEffect } from 'react'
 import { CollectionContext } from '../Contexts/CollectionContext';
 import CreateCollection from './CreateCollection'
 import CollectionFeed from './CollectionFeed'
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Item from '@mui/material/Grid';
+import { Grid, Item, Box } from '@mui/material';
+
 
 const LargeCollectionUI = () => {
   const { scrollPosition, updateScrollPosition } = useContext(CollectionContext);
   
-
-
   useEffect(() => {
     // Restore the scroll position on component mount
     window.scrollTo(0, scrollPosition);
