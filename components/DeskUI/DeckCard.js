@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useSpring, a,  } from "@react-spring/web";
-import { Textfit } from 'react-textfit';
+//import { Textfit } from 'react-textfit';
 import "@styles/globals.css";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { PropaneSharp } from "@mui/icons-material";
@@ -76,9 +76,9 @@ export default function DeckCard(props) {
               {/* <div className="center-parent"> */}
                 {/* <h1 className="card-text unhighlight-text">{props.back}</h1>
                 <h1 className="card-text unhighlight-text">{props.collectionID}</h1> */}
-                <Textfit className="card-text unhighlight-text" mode="multi" min={1} max={100}>
+                {/* <Textfit className="card-text unhighlight-text" mode="multi" min={1} max={100}> */}
                   {props.back}
-                </Textfit>
+                {/* </Textfit> */}
               {/* </div> */}
             </a.div>
           </div>

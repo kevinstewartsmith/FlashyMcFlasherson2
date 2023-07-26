@@ -4,7 +4,7 @@ import { Grid } from '@mui/material'
 import Note from '@components/CollectionUI/note'
 import { CollectionContext } from '../Contexts/CollectionContext'
 
-const CollectionList = ({data,onCollectionDelete}) => {
+const CollectionList = ({collectionItems, onCollectionDelete}) => {
     return (
         <div className='collection-feed'> 
             <Grid
@@ -15,7 +15,7 @@ const CollectionList = ({data,onCollectionDelete}) => {
                 justify="space-evenly"
                 alignItems="center"
             >       
-                { data.map((collection,idx) => (
+                { collectionItems.map((collection,idx) => (
                     <Grid key={idx} item padding={1} xs={12} sm={6} md={4} >
                         <Note
                             key={idx}
@@ -38,13 +38,21 @@ const CollectionFeed = (props) => {
     const [collectionItems,setCollectionItems] = useState([]);
     const { trigger,restoreScrollPosition } = useContext(CollectionContext);
     const [collectionDeleteCount, setCollectionDeleteCount] = useState(0);
-    function onCollectionDelete() {
-        setCollectionDeleteCount(collectionDeleteCount + 1)
+    function onCollectionDelete(deletedCollectionID) {
+        //setCollectionDeleteCount(collectionDeleteCount + 1)
+        //Something will happen here
+        console.log("deleted: " + deletedCollectionID);
+        const filteredCollections = collectionItems.filter((collection) => collection._id !== deletedCollectionID);
+        setCollectionItems(filteredCollections);
     }
 
     useEffect(() => {
         fetchCollections()
     },[trigger, collectionDeleteCount]);
+
+    // useEffect(() => {
+    //     fetchCollections()
+    // },[trigger]);
 
 
 
@@ -61,7 +69,7 @@ const CollectionFeed = (props) => {
   return (
     <div>       
         <CollectionList 
-            data={collectionItems}
+            collectionItems={collectionItems}
             onCollectionDelete={onCollectionDelete}
         />
     </div>

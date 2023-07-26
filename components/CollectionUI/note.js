@@ -15,6 +15,7 @@ function Note(props) {
   console.log("Collection ID in the note component"); 
   console.log(props.id);
   const [mouseEntered, setMouseEntered] = useState(false);
+  const [collectionID, setCollectionID] = useState(props.id);
   
   function handleMouse() {
     setMouseEntered(!mouseEntered);
@@ -23,16 +24,21 @@ function Note(props) {
   const clickDelete = async (event) => {
     event.preventDefault();
     console.log("delete clicked");
-    
-    try{
-      const response = await fetch(`/api/collection/delete/${props.id}`,{ method: "DELETE" })
-      if (response.ok) {
-        //router.push("/");
-        props.onCollectionDelete();
-      }
-    } catch (error) {
-      console.log(error);
-    } 
+    const deleteConfirmed = confirm("Are you sure you want to delete this collection?");
+
+
+    if (deleteConfirmed) {
+      //props.onCollectionDelete(collectionID);
+      try{
+        const response = await fetch(`/api/collection/delete/${props.id}`,{ method: "DELETE" })
+        if (response.ok) {
+          //router.push("/");
+          props.onCollectionDelete(collectionID);
+        }
+      } catch (error) {
+        console.log(error);
+      } 
+    }
   }
   const handleClick = async (event) => {
     event.preventDefault();
@@ -59,7 +65,7 @@ function Note(props) {
       </div>
       </div>
  
-      <div className="delete-button-container" onClick={clickDelete}>
+      <div className="delete-button-container" onClick={clickDelete} styles={{ backgroundColor: "red", width:"100%", height:"%100" }}>
         <DeleteOutlinedIcon className="delete-button" />
       </div>
     </div>

@@ -8,30 +8,31 @@ const CollectionParent = () => {
   const { scrollPosition, updateScrollPosition } = useContext(CollectionContext);
   const [collectionCount, setCollectionCount] = useState(0);
   
-  function collectionChanged() {
+  function collectionChanged(name, description) {
     setCollectionCount(collectionCount + 1);
+    
   }
-  useEffect(() => {
-    // Restore the scroll position on component mount
-    window.scrollTo(0, scrollPosition);
-  }, []);
+  // useEffect(() => {
+  //   // Restore the scroll position on component mount
+  //   window.scrollTo(0, scrollPosition);
+  // }, []);
 
-  useEffect(() => {
-    // Update the scroll position when it changes
-    const handleScroll = () => {
-      updateScrollPosition(window.scrollY);
-      console.log("scrollPosition: " + scrollPosition);
-    };
+  // useEffect(() => {
+  //   // Update the scroll position when it changes
+  //   const handleScroll = () => {
+  //     updateScrollPosition(window.scrollY);
+  //     console.log("scrollPosition: " + scrollPosition);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [updateScrollPosition, collectionCount]);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [updateScrollPosition, collectionCount]);
 
   return (
-    <div >
+    <div style={{marginLeft: "10vw", marginRight: "10vw" }}>
       <CreateCollection
           //onAdd={collectionChanged}
           inputType={"collection"}

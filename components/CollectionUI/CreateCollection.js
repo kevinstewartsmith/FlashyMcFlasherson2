@@ -60,7 +60,7 @@ function CreateCollection(props) {
 
         if (response.ok) {
           //router.push("/");
-          props.collectionAdded();
+          props.collectionChanged(name, description);
         }
       } catch (error) {
         console.log(error);
@@ -70,7 +70,7 @@ function CreateCollection(props) {
   }
 
   return (
-  
+    <div style={{ marginLeft:"20%", marginRight: "20%", marginBottom: 70, marginTop: 50 }}>
       <form className="create-note">
         <input
           name={props.topName}
@@ -97,6 +97,7 @@ function CreateCollection(props) {
           </Fab>
         </Zoom>
       </form>
+    </div>
   
   );
 }

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useSpring, a } from "@react-spring/web";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import "@styles/globals.css";
+// import { Textfit } from 'react-textfit';
+import FittedTextContainer from '@components/FittedTextContainer';
+import CardFittedTextContainer from "@components/CardFittedTextContainer";
 import { Textfit } from 'react-textfit';
 
 export default function FlashCard(props) {
@@ -32,27 +35,31 @@ export default function FlashCard(props) {
 }
 
   return (
+    <div>
     <div className="flash-card" onClick={() => set((state) => !state)}>
-        <a.div
-          className="c front"
-          style={{
-            opacity,
-            transform,
-            rotateX: "180deg",
-            borderRadius: 7,
-            display: "flex",
-            alignItems: "center",
-            justifyContent:"center",
-            height: "100%",
-            width: "100%"
-          }}
-        >
-          <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-            <Textfit mode="multi" min={1} max={80} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
-              {props.front}
-            </Textfit>
-          </div>
-        </a.div>
+      
+          <a.div
+            className="c front"
+            style={{
+              opacity,
+              transform,
+              rotateX: "180deg",
+              borderRadius: 7,
+              display: "flex",
+              alignItems: "center",
+              justifyContent:"center",
+              height: "100%",
+              width: "100%"
+            }}
+          >
+            <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+              <Textfit mode="multi" min={1} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
+                {props.front}
+              </Textfit>
+              {/* <FittedTextContainer text={props.front} /> */}
+              {/* <CardFittedTextContainer style={{ width: "100%" }} text={props.front} minText={1} maxText={40}/> */}
+            </div>
+          </a.div>
             <a.div
               className="c back"
               style={{
@@ -67,12 +74,14 @@ export default function FlashCard(props) {
               }}
             >
               <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-                <Textfit mode="multi" min={20} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
+                <Textfit mode="multi" min={1} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
                   {props.back}
                 </Textfit>
+                {/* <FittedTextContainer text={props.back} /> */}
               </div>
-            </a.div>
-          <DeleteOutlinedIcon className="delete-button" onClick={deleteFlashCard}/>  
+            </a.div>          
         </div>  
+
+      </div>
   );
 }

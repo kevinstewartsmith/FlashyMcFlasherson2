@@ -9,24 +9,24 @@ import { Grid, Item, Box } from '@mui/material';
 const LargeCollectionUI = () => {
   const { scrollPosition, updateScrollPosition } = useContext(CollectionContext);
   
-  useEffect(() => {
-    // Restore the scroll position on component mount
-    window.scrollTo(0, scrollPosition);
-  }, []);
+  // useEffect(() => {
+  //   // Restore the scroll position on component mount
+  //   window.scrollTo(0, scrollPosition);
+  // }, []);
 
-  useEffect(() => {
-    // Update the scroll position when it changes
-    const handleScroll = () => {
-      updateScrollPosition(window.pageYOffset);
-      console.log("scrollPosition: " + scrollPosition);
-    };
+  // useEffect(() => {
+  //   // Update the scroll position when it changes
+  //   const handleScroll = () => {
+  //     updateScrollPosition(window.pageYOffset);
+  //     console.log("scrollPosition: " + scrollPosition);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [updateScrollPosition]);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [updateScrollPosition]);
 
   return (
     <div >
