@@ -5,7 +5,7 @@ import "@styles/globals.css";
 // import { Textfit } from 'react-textfit';
 import FittedTextContainer from '@components/FittedTextContainer';
 import CardFittedTextContainer from "@components/CardFittedTextContainer";
-import { Textfit } from 'react-textfit';
+//import { Textfit } from 'react-textfit';
 
 export default function FlashCard(props) {
   const [flipped, set] = useState(true);
@@ -53,11 +53,12 @@ export default function FlashCard(props) {
             }}
           >
             <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-              <Textfit mode="multi" min={1} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
+              {/* <Textfit mode="multi" min={1} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
                 {props.front}
-              </Textfit>
+              </Textfit> */}
               {/* <FittedTextContainer text={props.front} /> */}
               {/* <CardFittedTextContainer style={{ width: "100%" }} text={props.front} minText={1} maxText={40}/> */}
+              {props.front}
             </div>
           </a.div>
             <a.div
@@ -74,10 +75,11 @@ export default function FlashCard(props) {
               }}
             >
               <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-                <Textfit mode="multi" min={1} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
+                {/* <Textfit mode="multi" min={1} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
                   {props.back}
-                </Textfit>
+                </Textfit> */}
                 {/* <FittedTextContainer text={props.back} /> */}
+                {props.back}
               </div>
             </a.div>          
         </div>  
