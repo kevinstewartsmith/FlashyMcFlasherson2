@@ -36,7 +36,7 @@ export default function DeckCard(props) {
   adjustFontSize();
 
   useEffect(() => {
-    adjustFontSize();
+    //adjustFontSize();
   }, [flipped]);
 
 
@@ -59,9 +59,10 @@ export default function DeckCard(props) {
               <div className="center-parent">
               
                 {/* <h1 className="card-text unhighlight-text">{props.front}</h1> */}
-                <Textfit className="card-text unhighlight-text" mode="multi" min={1} max={100}>
+                {/* <Textfit className="card-text unhighlight-text" mode="multi" min={1} max={100}>
                   {props.front}
-                </Textfit>
+                </Textfit> */}
+                <h1>{props.front}</h1>
               
               </div>
             </a.div>
