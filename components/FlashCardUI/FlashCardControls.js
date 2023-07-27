@@ -4,9 +4,14 @@ import CreateFlashCard from "./CreateFlashCard"
 import { Grid, IconButton } from "@mui/material"
 import { ViewCarousel, DashboardCustomize, Edit, Psychology, ElectricBolt } from "@mui/icons-material";
 import { useSpring, animated } from 'react-spring';
+import { useRouter } from "next/navigation";
 
 const FlashCardControls = (props) => {
     const [iconIsClicked, setIconIsClicked] = useState(false);
+    const router = useRouter()
+    console.log("Props: " );
+    console.log(props);    
+    const collectionID = props.collectionID;
 
     const editClicked = () => {
         console.log("Edit Flashcards Clicked");
