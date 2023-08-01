@@ -37,8 +37,8 @@ export default function FlashCard(props) {
 }
 
   return (
-    <div>
-    <div className="flash-card" onClick={() => set((state) => !state)}>
+    <div >
+    <div className="flash-card" onClick={() => set((state) => !state)} style={{ height:"156px", width:"260px" }}>
       
           <a.div
             className="c front"

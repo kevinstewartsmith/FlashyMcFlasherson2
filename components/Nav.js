@@ -25,7 +25,7 @@ function Header() {
   return (
     <nav className="flex-between w-full mb-4 p-4">
         <Link href="/" className="flex gap-2 flex-center">
-            <Image src={'/flashy-logo.png'} width={423.387} height={70} alt="Flashy McFlasherson" />
+            <Image src={'/flashy-logo.png'} width={211.6935} height={35} alt="Flashy McFlasherson" />
         </Link>
 
        {/* Desktop navigation */}

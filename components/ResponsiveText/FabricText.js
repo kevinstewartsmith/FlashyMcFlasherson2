@@ -6,6 +6,10 @@ function FabricText({ text }) {
   const [fontSize, setFontSize] = useState(100);
 
   //trigger useEffect if the window is resized
+
+  //trigger useEffect if the window is resized
+
+
   
 
 
