@@ -38,8 +38,7 @@ export default function FlashCard(props) {
 
   return (
     <div style={{height:"100%", width:"100%"}}>
-      <div className="flash-card" onClick={() => set((state) => !state)} style={{ height:"156px", width:"260px" }}>
-        
+      <div className="flash-card" onClick={() => set((state) => !state)} style={{ height:"100%", width:"80%" }}>
             <a.div
               className="c front"
               style={{
@@ -55,12 +54,6 @@ export default function FlashCard(props) {
               }}
             >
               <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-                {/* <Textfit mode="multi" min={1} max={50} style={{ display: "flex", alignItems: "center", justifyContent:"center", padding:"15px"}}>
-                  {props.front}
-                </Textfit> */}
-                {/* <FittedTextContainer text={props.front} /> */}
-                {/* <CardFittedTextContainer style={{ width: "100%" }} text={props.front} minText={1} maxText={40}/> */}
-                {/* {props.front} */}
                 <FabricText text={props.front}/>
               </div>
             </a.div>
@@ -79,7 +72,6 @@ export default function FlashCard(props) {
               >
                 <div className="center-parent" style={{width:"100%", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
                   <FabricText text={props.back}/>
-                  {/* {props.back} */}
                 </div>
               </a.div>          
           </div>  

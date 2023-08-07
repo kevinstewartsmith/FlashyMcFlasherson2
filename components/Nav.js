@@ -23,10 +23,12 @@ function Header() {
  
   
   return (
-    <nav className="flex-between w-full mb-4 p-4">
-        <Link href="/" className="flex gap-2 flex-center">
-            <Image src={'/flashy-logo.png'} width={211.6935} height={35} alt="Flashy McFlasherson" />
+    <nav className="flex-between w-full mb-0 p-4">
+     <div style={{display: "flex", alignItems: "center", justifyContent: "center", width: "212px", height: "100%", backgroundColor:"transparent" }}>
+        <Link href="/" className="flex gap-2 flex-center"> 
+            <Image src={'/flashy-logo2.png'} width={211.6935} height={35} alt="Flashy McFlasherson" />
         </Link>
+        </div>
 
        {/* Desktop navigation */}
        <div className="sm:flex hidden">
