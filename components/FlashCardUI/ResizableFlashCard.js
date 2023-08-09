@@ -38,7 +38,7 @@ export default function FlashCard(props) {
 
   return (
     <div style={{height:"100%", width:"100%"}}>
-      <div className="flash-card" onClick={() => set((state) => !state)} style={{ height:"100%", width:"80%" }}>
+      <div className="flash-card" onClick={() => set((state) => !state)} style={{ height:"100%", width:"100%" }}>
             <a.div
               className="c front"
               style={{
