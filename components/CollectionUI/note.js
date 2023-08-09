@@ -60,6 +60,7 @@ function Note(props) {
             <div className="center">
               <h1 className={montserrat.className}>{props.collectionName}</h1>
               <p>{mouseEntered ? props.description  : null}</p>
+              
             </div> 
           </div>
       </div>

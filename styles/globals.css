@@ -96,6 +96,68 @@ nav h1 {
   font-family: var(--font-shrikhand);
 } */
 
+/* Studio START */
+.studio-sidenav {
+  width:80px; 
+  height:calc(100vh - 50px);
+  border-width: 1px; 
+  background: #ff5b5b;
+  position: fixed;
+  z-index: 2; 
+}
+.studio-container {
+  width: calc(100vw - 80px);
+  height: calc(100vh - 50px);
+  position: fixed;
+  left: 80px;
+  top: 50px;
+  border-width: 1px;
+  border-color: yellow;
+}
+.studio-drawer {
+  position: absolute;
+  width: 425px;
+  height: calc(100vh - 50px);
+  background-color: yellow;
+  z-index: 1;
+  left: 0px;
+  top: 0px;
+  border-width: 6px;
+  border-color: green;
+}
+.studio-preview {
+  position: absolute;
+  width: calc(100vw - 425px - 80px);
+  height: calc(100vh - 50px);
+  background: transparent;
+  left: 425px;
+  top: 0px;
+  border-width: 0px;
+  border-color: blue;
+
+}
+
+.studio-canvas-container {
+  width:600px;
+  height:400px;
+  background-color:white;
+  border-radius: 10px
+}
+
+.canvas-and-drawer {
+  width: calc(100vw - 425px - 80px);
+  height: calc(100vh - 50px);
+  /* height: 100%;
+  width: 100%; */
+  border-width: 6px;
+  border-color: rgb(93, 250, 65);
+  padding: 50;
+}
+
+
+/*Studio END */
+
+
 .center {
   text-align: center;
   /* border: 3px solid blue; */
