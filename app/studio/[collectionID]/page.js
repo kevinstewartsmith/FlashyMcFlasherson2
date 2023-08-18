@@ -93,8 +93,7 @@ const Studio = ({params}) => {
                     
                 {/* </animated.div> */}
                 <animated.div className="gallery-container" style={studioGalleryAnimation}>
-                        Gallery Container
-                        <Gallery />
+                    <Gallery collectionID={params.collectionID}/>
                 </animated.div>
             </div>
         </div>

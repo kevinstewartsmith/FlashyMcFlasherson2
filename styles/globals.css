@@ -101,7 +101,7 @@ nav h1 {
   width:80px; 
   height:calc(100vh - 50px);
   border-width: 1px; 
-  background: #ff5b5b;
+  background: #f4f0f0;
   position: fixed;
   z-index: 2; 
 }
@@ -156,7 +156,7 @@ nav h1 {
 }
 .gallery-container {
   position: fixed;
-  width: 100vw;
+  width: calc(100vw - 80px);
   height: 200px;
   background-color: aquamarine;
   bottom: 0px;

@@ -90,7 +90,7 @@ const Gallery = ({items, collectionID}) => {
 
   return (
     <>
-      <IconButton
+      {/* <IconButton
         onClick={toggleDrawer}
         sx={{
           position: 'fixed',
@@ -111,12 +111,12 @@ const Gallery = ({items, collectionID}) => {
             height: '30vh', // Adjust the height of the expanded drawer as needed
           },
         }}
-      >
+      > */}
 
 
 
 
-    <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="row" style={{height: "100%"}} >
+    <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="row" style={{height: "100%", widows:"100%"}} >
       <Grid item padding={1} xs={0.5} sm={0.5} md={0.5} key={"flash" + 1} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} >
         {/* <button onClick={handlePrevClick}>Prev button</button> */}
         <NavigateBeforeIcon fontSize='large' onClick={handlePrevClick} />
@@ -159,7 +159,7 @@ const Gallery = ({items, collectionID}) => {
     </Grid>
 
 
-    </Drawer>
+    {/* </Drawer> */}
     </>
   );
 }
