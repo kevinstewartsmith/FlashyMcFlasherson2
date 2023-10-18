@@ -6,7 +6,7 @@ const Logo
  = () => {
   return (
     <div>
-    <Image src={'/flashy.png'} width={165.54} height={80} alt="Flashy McFlasherson" /><div className="lightning"><FlashOnIcon fontSize="56rem"/></div><Image src={'/McFlasherson.png'} width={313.6} height={80} alt="Flashy McFlasherson" />
+    <Image src={'/flashy.png'} width={165.54} height={50} alt="Flashy McFlasherson" /><div className="lightning"><FlashOnIcon fontSize="56rem"/></div><Image src={'/McFlasherson.png'} width={313.6} height={80} alt="Flashy McFlasherson" />
     {/* <div  className="italics" onClick={() => {}}><h1 className={lobsterTwo.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div> */}
     </div>
   )

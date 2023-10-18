@@ -7,6 +7,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { signIn, signOut, useSession, getProviders } from "next-auth/react"
 import '@styles/globals.css'
+import Logo from './Logo';
 
 
 function Header() {
@@ -31,10 +32,11 @@ function Header() {
  
   
   return (
-    <nav className="flex-between w-full mb-16 p-4">
+    <nav className="flex-between w-full mb-16 p-4" style={{ height: 50}}>
       {/* <div  className="italics" onClick={() => {}}><h1 className={lobsterTwo.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div> */}
         <Link href="/" className="flex gap-2 flex-center">
-            <Image src={'/flashy-logo.png'} width={423.387} height={70} alt="Flashy McFlasherson" />
+            <Image src={'/flashy-logo.png'} width={220} height={30} alt="Flashy McFlasherson" />
+            {/* <Logo /> */}
         </Link>
 
 
@@ -45,13 +47,7 @@ function Header() {
        <div className="sm:flex hidden">
                 {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
-                        <Link
-                            href="/create-prompt"
-                            className="black_btn"
-                            
-                        >
-                            Create Post
-                        </Link>
+ 
 
                         <button 
                             type="button"
@@ -112,13 +108,7 @@ function Header() {
                             >
                                 My Profile
                             </Link>
-                            <Link 
-                                className="dropdown_link"
-                                href="/create-prompt"
-                                onClick={() => setToggleDropDown(false)}
-                            >
-                                Create Prompt
-                            </Link>
+
                             <button
                                 type="button"
                                 onClick={() => {
