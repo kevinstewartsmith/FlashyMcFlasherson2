@@ -18,10 +18,8 @@ import { useSpring, animated } from 'react-spring';
 
 const StudioUIParent = ({params}) => {
     
-
     const toggleDrawer = () => {
-     // setIsDrawerOpen(!isDrawerOpen);
-     setExpanded(!expanded)
+        setExpanded(!expanded)
     };
 
     const menuItems = ["Themes","Photos", "APIs", "Uploads"]
@@ -163,7 +161,6 @@ const StudioUIParent = ({params}) => {
                     className='edit-card-container'
                 >
 
-
                     {/* <animated.div style={purpleDivStyles} /> */}
                 
                 
@@ -215,7 +212,7 @@ const StudioUIParent = ({params}) => {
                 
                    
                     
-                    <animated.div style={purpleDivStyles} ><h1 style={{position:"absolute", right:0}}>sdfsd</h1></animated.div>
+                    <animated.div style={purpleDivStyles} ><h1 style={{position:"absolute", right:0}}>sdfsd000</h1></animated.div>
   
                 
                     <Gallery collectionID={params.collectionID}/>

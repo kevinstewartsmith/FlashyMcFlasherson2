@@ -18,13 +18,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Provider> 
-          <ContextProvider >
-            <FlashCardContextProvider>
-              <Nav />
-                <Suspense fallback={<div>Loading...</div>}>
-                  {children}
-                </Suspense>
-            </FlashCardContextProvider>
+        <ContextProvider >
+        <FlashCardContextProvider>
+          <Nav />
+          <Suspense fallback={<div>Loading...</div>}>
+          {children}
+          </Suspense>
+          </FlashCardContextProvider>
           </ContextProvider>
         </Provider>
       </body>

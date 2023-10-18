@@ -40,10 +40,10 @@ const FlashCardUIParent = (props) => {
         setPracticeModeOff(!practiceModeOff)
     }
 
-    // useEffect(() => {     
-    //     fetchCollections()
-    //     fetchFlashCards()
-    // },[]);
+    useEffect(() => {     
+        fetchCollections()
+        fetchFlashCards()
+    },[]);
     
 
     const fetchCollections = async () => {

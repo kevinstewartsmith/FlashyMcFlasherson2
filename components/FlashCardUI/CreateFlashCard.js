@@ -1,14 +1,15 @@
 "use client"
-import React, { useState } from "react";
+
+import React, { useState, useContext, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
-//import Fab from "@mui/material/Fab";
-//import Zoom from "@mui/material/Zoom";
+import Fab from "@mui/material/Fab";
+import Zoom from "@mui/material/Zoom";
+import Alert from '@mui/material/Alert';
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Grid, Container, Fab, Zoom } from '@mui/material';
-import Image from "next/image";
-//import {Container} from '@mui/material';
+//import globals from styles folder
 import "@styles/globals.css";
+
 
 const CreateFlashCard = (props) => {
 
@@ -16,13 +17,15 @@ const CreateFlashCard = (props) => {
     const { data: session } = useSession()
     const [expanded, setExpansion] = useState(false);
     const [flashCardData, setFlashCardData] = useState({ front: "", back: "" });
+    //const {toggleTrigger} = useContext(CollectionContext);
+
 
     function handleClick() {  
         setExpansion(!expanded);
     }
     
-    function handleInputText(event) {
-      const { name, value } = event.target;
+      function handleInputText(event) {
+        const { name, value } = event.target;
     
         setFlashCardData((prevValue) => {
           if (name === "front" ) {
@@ -37,30 +40,13 @@ const CreateFlashCard = (props) => {
             };
           }
         });
-        //console.log(flashCardData);
+        console.log(flashCardData);
       }
 
-      const handleButtonClick = async () => {
-        try {
-          const response = await fetch(`/api/wiki/`);
-          const data = await response.json();
-          // Remove HTML tags and extract text content
-          const parser = new DOMParser();
-          const sanitizedHTML = parser.parseFromString(data, 'text/html');
-          const textContent = sanitizedHTML.body.textContent;
-
-          setFlashCardData((prevValue) => {
-              return {
-                front: prevValue.front,
-                back: textContent
-              };
-          });
-
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      };
-
+    //   useEffect(() => {
+    //     console.log(flashCardData);
+    // }, [handleInputText,flashCardData])
+    
       const submitNote = async (event) => {
         const front = flashCardData.front
         const back = flashCardData.back
@@ -83,15 +69,17 @@ const CreateFlashCard = (props) => {
             });
     
             if (response.ok) {
-              //router.push("/");
-              props.flashCardCreated()
+              router.push("/");
             }
           } catch (error) {
             console.log(error);
           } 
+        //   finally {
+        //     //toggleTrigger()
+        //   }
     }
     return (
-        <div style={{width: "100%", }}>  
+        <div>  
         <form className="create-note">
           <input
             name={"front"}
@@ -102,7 +90,6 @@ const CreateFlashCard = (props) => {
             value={flashCardData.front}
           />
           {expanded ? (
-            <>
             <textarea
               name={"back"}
               onChange={handleInputText}
@@ -110,38 +97,7 @@ const CreateFlashCard = (props) => {
               placeholder={"Add Flashcard Back"}
               //rows={rows}
               type="text"
-              style={{ height: 100 }}
             />
-            <Container style={{marginTop: "16px"}}>
-              <Grid container  spacing={2} style={{ padding: 0 }}>
-                <Grid item xs={2} style={{ padding: 0 }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
-                    <p ><strong>APIs</strong></p>
-                  </div>
-                </Grid>
-                <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
-                  <div onClick={handleButtonClick} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
-                    <Image src="/wiki-icon.png" alt="Wiki" width={70} height={70} />
-                  </div>
-                </Grid>
-                <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }} >
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
-                    <Image src="/worknik-icon.png" alt="Wiki" width={50} height={50} />
-                  </div>
-                </Grid>
-                <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
-                    <Image src="/lingua-robot-icon.png" alt="Wiki" width={50} height={50} />
-                  </div>
-                </Grid>
-                <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding:0 }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:"100%" }}>
-                    <Image src="/oxford-dictionary-logo.png" alt="Wiki" width={150} height={50} />
-                  </div>
-                </Grid>
-              </Grid>
-            </Container>
-            </>
           ) : null}
           
           <Zoom in={expanded}>

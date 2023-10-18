@@ -1,8 +1,10 @@
-"use client"
-import CollectionParent from "@components/CollectionUI/CollectionParent";
 
-function CollectionUI (props) {
-    return (<CollectionParent />)
+
+export default function collections() {
+  return (
+    <div>
+    
+      Collections
+    </div>
+  )
 }
-
-export default CollectionUI;

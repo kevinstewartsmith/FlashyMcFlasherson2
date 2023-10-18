@@ -14,6 +14,7 @@ function CardOptions(props) {
     }
     return (
         <div className="card-options">
+
             <Grid
                 container
                 //rowSpacing={1}
@@ -22,6 +23,20 @@ function CardOptions(props) {
                 justify="space-evenly"
                 alignItems="center"
             >
+                {/* <Grid item padding={2} xs={4} >
+                    <Zoom in={true} >
+                        <Fab color="primary" aria-label="add" onClick={props.editFlashCard}>
+                            <EditIcon sx={{color:"primary"}} /> 
+                        </Fab>
+                    </Zoom>
+                </Grid>
+                <Grid item padding={2} xs={4} >
+                    <Zoom in={true}>
+                        <Fab color="primary" aria-label="add" onClick={props.deleteFlashCard}>
+                            <DeleteOutlinedIcon sx={{color:"primary"}} className="delete-button" /> 
+                        </Fab>
+                    </Zoom>
+                </Grid> */}
                 <Grid item padding={1} xs={4} >
                     <EditFlashCardDialog
                         front={props.front}
@@ -37,6 +52,8 @@ function CardOptions(props) {
                         deleteFlashCard={props.deleteFlashCard}
                     />
                 </Grid>
+
+                
             </Grid>    
         </div>
     )

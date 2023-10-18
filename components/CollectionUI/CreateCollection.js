@@ -3,8 +3,10 @@ import React, { useState, useContext } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
+import Alert from '@mui/material/Alert';
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+//import globals from styles folder
 import "@styles/globals.css";
 import { CollectionContext } from "../Contexts/CollectionContext";
 
@@ -46,7 +48,6 @@ function CreateCollection(props) {
       console.log("Add something");      
       setCollectionData({ name: "",description: "" });
       event.preventDefault();  
-      
       try{
         const response = await fetch('/api/collection/new', {
           method: 'POST',
@@ -59,8 +60,7 @@ function CreateCollection(props) {
         });
 
         if (response.ok) {
-          //router.push("/");
-          props.collectionChanged(name, description);
+          router.push("/");
         }
       } catch (error) {
         console.log(error);
@@ -70,7 +70,7 @@ function CreateCollection(props) {
   }
 
   return (
-    <div style={{ marginLeft:"20%", marginRight: "20%", marginBottom: 70, marginTop: 50 }}>
+    <div>  
       <form className="create-note">
         <input
           name={props.topName}
@@ -98,7 +98,6 @@ function CreateCollection(props) {
         </Zoom>
       </form>
     </div>
-  
   );
 }
 export default CreateCollection;

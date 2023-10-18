@@ -10,8 +10,10 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
-const Gallery = ({items, collectionID}) => {
+
+const Gallery = ({items, collectionID, toggleGallery}) => {
   const carouselRef = useRef(null);
   const padding = {
     paddingLeft: 40,     // in pixels
@@ -20,13 +22,14 @@ const Gallery = ({items, collectionID}) => {
 
   const responsive = {
     0: { items: 3 },
-    568: { items: 6 },
-    1024: { items: 9 },
+    568: { items: 5 },
+    1024: { items: 5 },
   };
   const [componentCollection, setComponentCollection] = useState([])
   const [componentFlashCards, setComponentFlashCards] = useState([])
   const [newFlashCards, setNewFlashCards] = useState(0)
   //const [collectionID, setCollectionID] = useState("")
+  const [selectedFlashCard, setSelectedFlashCard] = useState(null)
 
   const [open, setOpen] = useState(false);
 
@@ -90,76 +93,75 @@ const Gallery = ({items, collectionID}) => {
 
   return (
     <>
-      {/* <IconButton
-        onClick={toggleDrawer}
-        sx={{
-          position: 'fixed',
-          bottom: '20px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 1,
-        }}
-      >
-        <ExpandMoreIcon />
-      </IconButton>
-      <Drawer
-        anchor="bottom"
-        open={open}
-        onClose={toggleDrawer}
-        sx={{
-          '& .MuiDrawer-paper': {
-            height: '30vh', // Adjust the height of the expanded drawer as needed
-          },
-        }}
-      > */}
+      <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="row" style={{height: "100%", widows:"100%"}} >
+        <Grid item padding={1} xs={0.5} sm={0.5} md={0.5} key={"flash" + 1} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} >
+          {/* <button onClick={handlePrevClick}>Prev button</button> */}
+          <NavigateBeforeIcon fontSize='large' onClick={handlePrevClick} />
+        </Grid>
+        <Grid item padding={1} xs={11} sm={11} md={11} key={"flash" + 2} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} style={{height: "100%"}}>
+          <AliceCarousel 
+            mouseTracking 
+            disableDotsControls={true}          
+            responsive={responsive}
+            autoHeight={false}
+            style={{ height:"100%", width:"100%",backgroundColor:"red" }}
+            ssrSilentMode={false}
+            //items={items} 
+            innerWidth={getInnerWidth()} 
+            stagePadding={padding}
+            ref={carouselRef}
+            disableButtonsControls={true}
+            items={componentFlashCards.map((item,idx) => (
+              // <div key={ "gallery_" + item.idx } style={{ backgroundColor: item.backgroundColor, width: item.width, height: item.height }}>{item.content}</div>
+              <div 
+                key={"galleryContainer_" + idx} 
+                onClick={() => setSelectedFlashCard(idx)}
+                style={{ 
+                  backgroundColor:"white", 
+                  width:"30vh", 
+                  height:"25vh", 
+                  display: "flex", 
+                  justifyContent: "center", 
+                  alignContent: "center", 
+                  borderColor: "green",
+                  borderRadius: 10,
+                  borderWidth: 10,
+                  borderColor: selectedFlashCard === idx ? "blue" : "transparent", // Apply conditional background color
+              }} >
+                {/* <div style={{ width:"50%",height:"50%", backgroundColor:"green"}}>
+                  <h1>{item.front}</h1>
 
-
-
-
-    <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="row" style={{height: "100%", widows:"100%"}} >
-      <Grid item padding={1} xs={0.5} sm={0.5} md={0.5} key={"flash" + 1} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} >
-        {/* <button onClick={handlePrevClick}>Prev button</button> */}
-        <NavigateBeforeIcon fontSize='large' onClick={handlePrevClick} />
-      </Grid>
-      <Grid item padding={1} xs={11} sm={11} md={11} key={"flash" + 2} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} style={{height: "100%"}}>
-        <AliceCarousel 
-          mouseTracking 
-          disableDotsControls={true}          
-          responsive={responsive}
-          autoHeight={false}
-          style={{ height:"100%", width:"100%",backgroundColor:"green" }}
-          ssrSilentMode={false}
-          //items={items} 
-          innerWidth={getInnerWidth()} 
-          stagePadding={padding}
-          ref={carouselRef}
-          disableButtonsControls={true}
-          items={componentFlashCards.map((item,idx) => (
-            // <div key={ "gallery_" + item.idx } style={{ backgroundColor: item.backgroundColor, width: item.width, height: item.height }}>{item.content}</div>
-            <div key={"galleryContainer_" + idx} style={{ backgroundColor:"pink", width:"8vw", height:"15vh", display: "flex", justifyContent: "center", alignContent: "center" }} >
-            {/* <FlashCard 
-              key={"gallery_"+ item._id}
-              id={item._id}
-              front={item.front}
-              back={item.back}
-            /> */}
-              <div style={{ width:"50px",height:"50px", backgroundColor:"green"}}>
-                <h1>{item.front}</h1>
+                </div> */}
+                <FlashCard 
+                  key={item._id}
+                  id={item._id}
+                  front={item.front}
+                  back={item.back}
+                  width={"100%"}
+                  height={"18vh"}
+                />
+                
               </div>
-              
-            </div>
-          ))}
-
-        />
+            ))}
+          />
+        </Grid>
+        <Grid 
+          item 
+          padding={1} 
+          xs={0.5} 
+          sm={0.5} 
+          md={0.5} 
+          key={"flash" + 1} 
+          width={30} 
+          justify="space-evenly" 
+          display={"flex"} 
+          alignItems="center" 
+          justifyContent={"center"}
+        >
+          {/* <button onClick={handleNextClick}>Next button</button> */}
+          <NavigateNextIcon fontSize='large' onClick={handleNextClick} />
+        </Grid>
       </Grid>
-      <Grid item padding={1} xs={0.5} sm={0.5} md={0.5} key={"flash" + 1} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"}>
-        {/* <button onClick={handleNextClick}>Next button</button> */}
-        <NavigateNextIcon fontSize='large' onClick={handleNextClick} />
-      </Grid>
-    </Grid>
-
-
-    {/* </Drawer> */}
     </>
   );
 }

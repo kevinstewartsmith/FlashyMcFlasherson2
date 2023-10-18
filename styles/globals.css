@@ -16,11 +16,6 @@
   }
 }
 
-html {
-  overflow-x: hidden;
-  overscroll-behavior-x: contain;
-}
-
 body {
   background: #eee;
   /* background-color: #577191; */
@@ -39,7 +34,7 @@ nav {
   /* margin: auto -16px;
   padding: 16px 32px; */
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  height: 50px;
+  height: 100px;
 }
 
 nav h1 {
@@ -69,9 +64,8 @@ nav h1 {
 
 /** From original Repo - START*/
 .collection-feed {
-  margin-left: 3vw;
-  margin-right: 3vw;
-
+  margin-left: 8vw;
+  margin-right: 8vw;
 }
 .note-div {
   top: 0%;
@@ -92,91 +86,6 @@ nav h1 {
   padding-bottom: 40px;
 }
 
-/* .collection-title {
-  font-family: var(--font-shrikhand);
-} */
-
-/* Studio START */
-.studio-sidenav {
-  width:80px; 
-  height:calc(100vh - 50px);
-  border-width: 1px; 
-  background: #f4f0f0;
-  position: fixed;
-  z-index: 2; 
-}
-.studio-container {
-  width: calc(100vw - 80px);
-  height: calc(100vh - 50px);
-  position: fixed;
-  left: 80px;
-  top: 50px;
-  border-width: 0px;
-  background-color: transparent;
-  z-index: 1;
-}
-.studio-drawer {
-  position: absolute;
-  width: 425px;
-  height: calc(100vh - 50px);
-  background-color: white;
-  z-index: 1;
-  left: 0px;
-  top: 0px;
-  border-width: 5px;
-  border-color: green;
-}
-.studio-preview {
-  position: absolute;
-  /* width: calc(100vw - 425px - 80px);
-  height: calc(100vh - 50px); */
-  background: transparent;
-  left: 425px;
-  top: 0px;
-  border-width: 1px;
-  border-color: blue;
-
-}
-.drawer-container {
-  position: absolute;
-  width: 100%;
-  /* height: 100%; */
-  background-color: transparent;
-  border-color: rgb(7, 34, 210);
-  border-width: 4px;
-  /* z-index: 1; */
-}
-
-.studio-canvas-container {
-  width:600px;
-  height:400px;
-  background-color:white;
-  border-radius: 10px;
-  z-index:3;
-}
-.gallery-container {
-  position: fixed;
-  width: calc(100vw - 80px);
-  height: 200px;
-  background-color: aquamarine;
-  bottom: 0px;
-  z-index: 2;
-}
-
-.canvas-and-drawer {
-  /* width: calc(100vw - 425px - 80px);
-  height: calc(100vh - 50px); */
-  /* height: 100%;
-  width: 100%; */
-  border-width: 6px;
-  border-color: rgb(93, 250, 65);
-  /* padding: 50; */
-}
-
-
-/*Studio END */
-
-
 .center {
   text-align: center;
   /* border: 3px solid blue; */
@@ -184,54 +93,8 @@ nav h1 {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  /* width: 220px; */
+  width: 220px;
 }
-.center-parent {
-  position: relative;
-  height: 100%; /* adjust the height of the container as needed */
-  width: 100%; /* adjust the width of the container as needed */
-  border: 1px solid black; /* just for visualization */
-  overflow: hidden;
-  background-color: transparent;
-  opacity: 100%;
-  border-radius: 7px;
-}
-
-.card-text {
-  width: 90%;
-  max-height: 90%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  line-height: 1.2; /* adjust the line height as needed */
-  margin: 0; /* remove default margins */
-  white-space: normal; /* allow text to wrap into multiple lines */
-  word-break: normal; /* allow normal word breaking */
-}
-
-@media screen and (min-height: 300px) {
-  .card-text {
-    font-size: 16vh; /* adjust the font size for taller containers */
-  }
-}
-
-@media screen and (min-height: 400px) {
-  .card-text {
-    font-size: 20vh; /* adjust the font size for even taller containers */
-  }
-}
-
-.unhighlight-text {
-  -webkit-touch-callout: none; /* Disable iOS touch callout */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
-
 
 .note {
   background: white;
@@ -246,31 +109,12 @@ nav h1 {
   
 }
 
-
-.card-text-container {
-  width: "100%"; /* Set the width of the container */
-}
-
-.card-text {
-  font-size: clamp(16px, 5vw, 30px); /* Define the range of acceptable font sizes */
-  /* Adjust other styles as needed */
-}
-
-.fitted-text-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  /* Add any other styles you want */
-}
-
 .c {
-  border-radius: 7px;
   position: absolute;
-  max-width: 100%;
-  max-height: 100%;
-  /* width: 100%;
-  height: 100%; */
+  max-width: 320px;
+  max-height: 180px;
+  width: 340px;
+  height: 180px;
   cursor: pointer;
   will-change: transform, opacity;
 }
@@ -278,14 +122,12 @@ nav h1 {
 .d {
   position: absolute;
   max-width: 1000px;
-  max-height: 1000px;
-  /* width: 340px;
-  height: 1800px; */
-  width: 100%;
-  height: 100%;
+  max-height: 340px;
+  width: 500px;
+  height: 340px;
   cursor: pointer;
   will-change: transform, opacity;
-  border-width: 0px;
+  border-width: 00px;
   border-color: green;
 }
 
@@ -293,14 +135,11 @@ nav h1 {
 .back {
   background-size: cover;
   box-shadow: 0 3px 10px rgba(0, 1, 0, 0.3);
-  height: 100%;
-  width: 100%;
 }
 
 .back {
   /*background-image: url(https://images.unsplash.com/photo-1544511916-0148ccdeb877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1901&q=80i&auto=format&fit=crop);*/
   background-color: white;
-  border-radius: 7px;
   
   
 }
@@ -310,26 +149,23 @@ nav h1 {
   background-color: white;
   border-width: 0px;
   border-color: blue;
-  width: 100%;
-  height: 100%;
-  border-radius: 7px;
 }
 
 .flash-card {
-  background: "transparent";
+  background: clear;
   border-radius: 7px;
   /* box-shadow: 0 2px 5px rgb(100, 95, 95); */
   padding: 0px;
-  width: 100%;
-  height: 25vh;
-  margin: 0px;
+  width: 320px;
+  height: 180px;
+  margin: 16px;
   float: left;
   position: relative;
 }
 
 .desk-parent {
   top: 0%;
-  position: relative;
+ position: absolute;
   height: 100%;
   width: 100%;
   display: flex; 
@@ -338,11 +174,12 @@ nav h1 {
 }
 
 .desk {
-  position: relative;
+  position: absolute;
   /* height: 100%; */
   width: 80%;
+  
   background-color: clear;
-  /* display: flex; */
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 30 30, auto;
@@ -354,21 +191,24 @@ nav h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 540px; 
+  width: 600px;
+  height: 440px; 
   margin-right: auto;
   margin-left: auto;
   margin-top: 50px;
   margin-bottom: auto;
   background-color: clear;
-
+  /* overflow: hidden; */
+  /* width: 100%;
+  height: 100%; */
+  /* margin-left: 240px; */
   
 }
 
 .spring-parent {
   position: absolute;
-  width: 75vw;
-  height: 85vh;
+  /* width: 100%;
+  height: 100%; */
   will-change: transform;
   display: flex;
   align-items: center;
@@ -381,37 +221,15 @@ nav h1 {
   background-size: auto 85%;
   background-repeat: no-repeat;
   background-position: center center;
-  width: 60%;
-  max-width: 60%;
-  height: 60%;
+  width: 500px;
+  max-width: 90%;
+  height: 340px;
   max-height: 80%;
   will-change: transform;
-  border-radius: 60px;
+  border-radius: 10px;
   background-color: clear;
   
   /* box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3); */
-}
-/* .deck-card {
-  height: 100%;
-} */
-
-#textContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px; /* Adjust the container width as needed */
-  height: 100px; /* Adjust the container height as needed */
-  overflow: hidden;
-}
-
-#fitText {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 76px; /* Initial font size */
 }
 
 
@@ -419,7 +237,7 @@ nav h1 {
 
 form.create-note {
   position: relative;
-  /* width: 100px; */
+  width: 480px;
   margin: 30px auto 50px auto;
   background: #fff;
   padding: 25px;
@@ -452,8 +270,8 @@ form.create-note button {
 }
 form.create-note {
   position: relative;
-  width:  "100%";
-  /* margin: 30px auto 70px auto; */
+  width: 480px;
+  margin: 30px auto 70px auto;
   background: #fff;
   padding: 15px;
   border-radius: 7px;
@@ -461,7 +279,7 @@ form.create-note {
 }
 form.create-note input,
 form.create-note textarea {
-  width: "100%";
+  width: 100%;
   border: none;
   padding: 4px;
   outline: none;
@@ -472,13 +290,9 @@ form.create-note textarea {
 
 form.create-note input {
   font-size: 1.2em;
-  width: "100%";
-  display: block;
 }
 form.create-note textarea {
   font-size: 0.8em;
-  width: "100%";
-  display: block;
 }
 form.create-note button {
   position: absolute;
